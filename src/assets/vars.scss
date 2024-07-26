@@ -12,7 +12,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --x-body--backgroud: #111;
-    --x-backgroud-image: url('./backgrounds/dirt.webp');
+    --x-backgroud-image: url('assets/backgrounds/dirt.webp');
     --x-body--color: #adb5bd;
 
     --x-content__title--color: #f8f9fa;
@@ -26,14 +26,14 @@
   font-family: Minecraft;
   src: local('Minecraft-ru'),
   local('Minecraft'),
-  url('./fonts/Minecraft.woff2') format('woff2'),
-  url('./fonts/Minecraft.woff') format('woff')
+  url('assets/fonts/Minecraft.woff2') format('woff2'),
+  url('assets/fonts/Minecraft.woff') format('woff')
 }
 
 @font-face {
   font-family: 'Minecraft-ru';
   src: local('Minecraft-ru'),
   local('Minecraft'),
-  url('./fonts/Minecraft.woff2') format('woff2'),
-  url('./fonts/Minecraft.woff') format('woff')
+  url('assets/fonts/Minecraft.woff2') format('woff2'),
+  url('assets/fonts/Minecraft.woff') format('woff')
 }
