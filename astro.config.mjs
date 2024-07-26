@@ -5,8 +5,5 @@ export default defineConfig({
   site: 'https://shizo-land.ru',
   devToolbar: {
     enabled: false
-  },
-  build: {
-    assets: 'assets'
   }
 })
