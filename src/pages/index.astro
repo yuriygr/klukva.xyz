@@ -2,7 +2,7 @@
 import Landing from '@layouts/Landing.astro';
 
 import Card from '@components/Card.astro';
-import Cover from '@components/Cover.astro';
+import CardMod from '@components/CardMod.astro';
 import Spacer from '@components/Spacer.astro';
 
 const title = 'ШизаЛенд'
@@ -17,28 +17,33 @@ const data = await response.json();
 const plugins = [
 	{
 		title: 'Plasmo Voice',
-		info: 'Удобный голосовой чат в игре',
-		url: 'https://modrinth.com/plugin/plasmo-voice'
+		info: 'Мод голосового чата с функцией определения местоположения по звуку и множеством функций',
+		url: 'https://modrinth.com/plugin/plasmo-voice',
+		icon: 'https://cdn.modrinth.com/data/1bZhdhsH/icon.png'
 	},
 	{
 		title: "Xaero's Minimap",
-		info: 'Мини-карта для лучшей навигации по миру',
-		url: 'https://modrinth.com/mod/xaeros-minimap'
+		info: 'Отображает карту мира, игроков, мобов, сущностей в углу экрана. Позволяет создавать путевые точки',
+		url: 'https://modrinth.com/mod/xaeros-minimap',
+		icon: 'https://cdn.modrinth.com/data/1bokaNcj/80eb00784e250b99fb1789da35869387d14d5637.png'
 	},
 	{
 		title: 'WI Zoom',
-		info: 'Отличный инструмент чтобы всматриваться в даль',
-		url: 'https://modrinth.com/mod/wi-zoom'
+		info: 'Мод для Minecraft, предлагающий 50-кратное увеличение с плавным движением камеры. Поддерживает Fabric и NeoForge',
+		url: 'https://modrinth.com/mod/wi-zoom',
+		icon: 'https://cdn.modrinth.com/data/o7DitHWP/42141bea19c86ee3a0034c3d1eb844c0d9b30454.png'
 	},
 	{
 		title: 'Sodium',
-		info: '',
-		url: 'https://modrinth.com/mod/sodium'
+		info: 'Самый быстрый и совместимый мод оптимизации рендеринга для Minecraft',
+		url: 'https://modrinth.com/mod/sodium',
+		icon: 'https://cdn.modrinth.com/data/AANobbMI/icon.png'
 	},
 	{
 		title: 'Sodium Extra',
-		info: '',
-		url: 'https://modrinth.com/mod/sodium-extra'
+		info: 'Дополнение Sodium, добавляющее функции, которых не должно быть в Sodium',
+		url: 'https://modrinth.com/mod/sodium-extra',
+		icon: 'https://cdn.modrinth.com/data/PtjYWJkn/icon.png'
 	}
 ]
 
@@ -65,8 +70,10 @@ const plugins = [
 	
 	<Spacer />
 
-	<Card title="Рекомендуемые моды">
-		{ JSON.stringify(plugins) }
+	<Card title="Рекомендуемые моды" mode="list">
+		{ plugins.map(item =>
+			<CardMod title={item.title} info={item.info} url={item.url} icon={item.icon} />
+		)}
 	</Card>
 
 	<Spacer />
@@ -74,6 +81,8 @@ const plugins = [
 	<Card title="Fucking astro shit">
 		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur doloribus, explicabo porro fugiat praesentium saepe sapiente nam labore ducimus magni dicta quibusdam voluptates esse reiciendis, non unde veritatis maiores officiis.
 	</Card>
+
+	<Spacer />
 
 </Landing>
 

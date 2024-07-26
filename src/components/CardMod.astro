@@ -1,0 +1,98 @@
+---
+interface Props {
+  title?: string;
+  info?: string;
+  url?: string;
+  icon?: string;
+}
+
+const { title, info, url, icon } = Astro.props;
+---
+
+
+<a class="card-mod" target="_blanl" href={url}>
+  <div class="card-mod__icon">
+    <img src={icon} />
+  </div>
+  <div class="card-mod__content">
+    <div class="card-mod__title" set:text={title}/>
+    <div class="card-mod__info" set:text={info}/>
+  </div>
+</a>
+
+<script>
+
+</script>
+
+<style lang="scss">
+$icon-size: 48px;
+
+.card-mod {
+	font-family: 'Minecraft';
+  display: grid;
+  grid-template-columns: $icon-size auto;
+  position: relative;
+  background: #373737;
+  color: #aaaaaa;
+  border: 2px solid;
+  border-color: #000000 #8b8b8b #8b8b8b #000000;
+  padding: 1rem;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  @media(hover: hover) {
+    &:hover {
+      background: #323232;
+      color: #b0b0b0;
+      text-decoration: none;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: " ";
+    position: absolute;
+    background-color: #373737;
+    height: 2px;
+    width: 2px;
+    pointer-events: none;
+  }
+
+  &::before { bottom: -2px; left: -2px; }
+  &::after { top: -2px; right: -2px; }
+
+  &__icon {
+    img {
+      border-radius: 8px;
+      display: block;
+      height: $icon-size;
+      width: $icon-size;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  &__title {
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.3rem;
+    line-height: calc(1.4 * 1em);
+    margin-bottom: .25rem;
+  }
+
+  &__info {
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: calc(1.4 * 1em);
+  }
+}
+</style>

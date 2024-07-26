@@ -2,9 +2,10 @@
 interface Props {
 	title?: string;
 	subtitle?: string;
+	mode?: string;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, mode = 'plain' } = Astro.props;
 ---
 
 
@@ -15,7 +16,7 @@ const { title, subtitle } = Astro.props;
 			{ subtitle && <div class="card-header__subtitle" set:text={subtitle} /> }
 		</div>
 	}
-	<div class="card-content">
+	<div class={`card-content-${mode}`}>
 		<slot>
 	</div>
 </div>
@@ -57,19 +58,14 @@ const { title, subtitle } = Astro.props;
 		}
 	}
 
-	&-content {
+	&-content-plain {
     background: #373737;
     border: 2px solid;
     border-color: #000000 #8b8b8b #8b8b8b #000000;
     padding: 1rem;
 	}
 
-	&-content-list {
-		background-color: #8B8B8B;
-    border: 2px solid;
-    border-color: #373737 #FFF #FFF #373737;
-    padding: 1rem;
-	}
+	&-content-list { }
 }
 
 </style>
