@@ -1,7 +1,7 @@
 {
-  "name": "vue-norma.ru",
+  "name": "shizo-land.ru",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev",
