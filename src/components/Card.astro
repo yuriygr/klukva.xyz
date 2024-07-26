@@ -1,0 +1,75 @@
+---
+interface Props {
+	title?: string;
+	subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+
+<div class="card">
+	{ (title || subtitle) &&
+		<div class="card-header">
+			{ title && <div class="card-header__title" set:text={title} /> }
+			{ subtitle && <div class="card-header__subtitle" set:text={subtitle} /> }
+		</div>
+	}
+	<div class="card-content">
+		<slot>
+	</div>
+</div>
+
+<script>
+
+</script>
+
+<style lang="scss">
+
+.card {
+	background: #C6C6C6;
+	border: 2px solid #373737;
+	box-shadow: inset -2px -3px #0006, inset 2px 2px #fff7;
+	padding: 1rem;
+	border-radius: 6px;
+	position: relative;
+
+	&-header {
+		margin-top: -6px;
+    margin-inline: 2px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    font-optical-sizing: auto;
+    user-select: none;
+
+		&__title {
+			font-family: 'Minecraft';
+			color: #3F3F3F;
+			font-size: 1.6rem;
+
+			white-space: pre-line;
+			word-wrap: break-word;
+			word-break: break-word;
+			font-weight: 400;
+			line-height: calc(1.6 * 1em);
+		}
+	}
+
+	&-content {
+    background: #373737;
+    border: 2px solid;
+    border-color: #000000 #8b8b8b #8b8b8b #000000;
+    padding: 1rem;
+	}
+
+	&-content-list {
+		background-color: #8B8B8B;
+    border: 2px solid;
+    border-color: #373737 #FFF #FFF #373737;
+    padding: 1rem;
+	}
+}
+
+</style>

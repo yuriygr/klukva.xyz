@@ -1,0 +1,76 @@
+---
+import Landing from '@layouts/Landing.astro';
+
+import Card from '@components/Card.astro';
+import Cover from '@components/Cover.astro';
+import Spacer from '@components/Spacer.astro';
+
+const title = 'ШизаЛенд'
+const description = 'Мой маненький ванильный сервер <3'
+const address = 'mc.shizo-land.ru'
+
+// 
+const response = await fetch(`https://api.mcsrvstat.us/3/${address}`);
+const data = await response.json();
+
+// Plugins
+const plugins = [
+	{
+		title: 'Plasmo Voice',
+		info: 'Голосовой чат в игре',
+		url: 'https://modrinth.com/plugin/plasmo-voice'
+	},
+	{
+		title: 'CoreProtect',
+		info: 'Лучший инструмент устранения последствий неверных решений',
+		url: 'https://modrinth.com/plugin/coreprotect'
+	},
+	{
+		title: 'BlazeandCave',
+		info: 'Добавляет свыше тысячи достижений в мир сервера',
+		url: 'https://modrinth.com/datapack/blazeandcaves-advancements-pack'
+	}
+]
+
+---
+
+<Landing title={title} description={description}>
+	{ data.online &&
+		<Card>
+			<div class="server">
+				<div class="server__motd" set:html={data.motd.html} />
+				<div class="server__playsers">
+					<span class="online" set:text={data.players.online} />
+					/
+					<span class="max" set:text={data.players.max} />
+				</div>
+			</div>
+		</Card>
+		<Spacer />
+	}
+
+	<Card title="Последние новости">
+		Деда кусили за хуй!
+	</Card>
+	
+	<Spacer />
+
+	<Card title="Установленные моды">
+		{ JSON.stringify(plugins) }
+	</Card>
+
+	<Spacer />
+
+	<Card title="Fucking astro shit">
+		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur doloribus, explicabo porro fugiat praesentium saepe sapiente nam labore ducimus magni dicta quibusdam voluptates esse reiciendis, non unde veritatis maiores officiis.
+
+	</Card>
+
+</Landing>
+
+<style>
+.server {
+	font-family: 'Minecraft';
+
+}
+</style>

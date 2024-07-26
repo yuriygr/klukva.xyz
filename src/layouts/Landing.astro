@@ -1,0 +1,93 @@
+---
+//import '@south-paw/typeface-minecraft'
+import 'normalize.css';
+import '@assets/vars.scss';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} / {description}</title>
+	</head>
+	<body>
+		<div class="container">
+			<slot />
+		</div>
+	</body>
+</html>
+
+<script>
+
+</script>
+
+<style lang="scss" is:global>
+* { box-sizing: border-box; }
+html { font-size: 62.5%; }
+
+body {
+	background-color: var(--x-body--backgroud, #fff);
+  color: var(--x-body--color, #495057);
+  font-family: -apple-system,BlinkMacSystemFont,Lato,"Segoe UI",Verdana,Arial,sans-serif;
+  font-size: 14px;
+	font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+	line-height: 1.6;
+	margin: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-overflow-scrolling: touch;
+	-moz-osx-font-smoothing: auto;
+	-ms-text-size-adjust: 100%;
+
+	/* magic mobile viewport iOS bug fix */
+  /* also see: https://css-tricks.com/css-fix-for-100vh-in-mobile-webkit/ */
+  /* also see: https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/ */
+  height: -webkit-fill-available;
+  -webkit-overflow-scrolling: auto;
+
+	background-image: var(--x-backgroud-image), var(--x-backgroud-image);
+	background-repeat: repeat-x, repeat;
+	background-position: top left, top left;
+	background-size: auto 100px, auto 100px;
+}
+
+a {
+	-webkit-tap-highlight-color: transparent;
+	color: #e64980;
+	cursor: pointer;
+	text-decoration: none;
+	transition: opacity .1s ease-out, color .1s ease-out;
+
+  &.disabled { pointer-events: none; opacity: .8; }
+
+  @media(hover: hover) {
+		&:hover { text-decoration: underline; color: #c2255c; }
+	}
+
+  @media(active: active) {
+		&:active { color: #a61e4d; }
+	}
+
+  &:focus { outline: 0; }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4%;
+  padding-right: 4%;
+  max-width: 600px;
+}
+</style>

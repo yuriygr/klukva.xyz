@@ -1,0 +1,39 @@
+:root {
+  --x-body--backgroud: #fff;
+  --x-backgroud-image: url('backgrounds/dirt.webp');
+  --x-body--color: #495057;
+
+  --x-content__title--color: #212529;
+  --x-content__sub--color: #495057;
+
+  --x-code__field--border-color: #dee2e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --x-body--backgroud: #111;
+    --x-backgroud-image: url('backgrounds/dirt.webp');
+    --x-body--color: #adb5bd;
+
+    --x-content__title--color: #f8f9fa;
+    --x-content__sub--color: #adb5bd;
+
+    --x-code__field--border-color: #212529;
+  }
+}
+
+@font-face {
+  font-family: Minecraft;
+  src: local('Minecraft-ru'),
+  local('Minecraft'),
+  url('fonts//Minecraft.woff2') format('woff2'),
+  url('fonts//Minecraft.woff') format('woff')
+}
+
+@font-face {
+  font-family: 'Minecraft-ru';
+  src: local('Minecraft-ru'),
+  local('Minecraft'),
+  url('fonts//Minecraft.woff2') format('woff2'),
+  url('fonts//Minecraft.woff') format('woff')
+}

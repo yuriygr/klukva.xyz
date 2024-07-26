@@ -1,0 +1,14 @@
+{
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "500",
+  "editor.fontSize": 12,
+  "editor.tabSize": 2,
+  "editor.rulers": [120],
+  "workbench.colorCustomizations": {
+    //"editorRuler.foreground": "#ff4081"
+  },
+  "git.enabled": true,
+  "git.path": null,
+  "git.autofetch": false,
+  "window.title": "${activeEditorShort}${separator}shizo-land.ru${separator}${folderName}"
+}
