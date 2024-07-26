@@ -3,15 +3,15 @@ import Landing from '@layouts/Landing.astro';
 
 import Card from '@components/Card.astro';
 import CardMod from '@components/CardMod.astro';
+import CardServer from '@components/CardServer';
 import Spacer from '@components/Spacer.astro';
 
 const title = 'ШизаЛенд'
 const description = 'Мой маненький ванильный сервер <3'
 const address = 'mc.shizo-land.ru'
 
-// 
 const response = await fetch(`https://api.mcsrvstat.us/3/${address}`);
-const data = await response.json();
+const data = await response.json()
 
 // Plugins
 import plugins from '@data/plugins.json';
@@ -19,19 +19,13 @@ import plugins from '@data/plugins.json';
 ---
 
 <Landing title={title} description={description}>
-	{ data.online &&
-		<Card>
-			<div class="server">
-				<div class="server__motd" set:html={data.motd.html} />
-				<div class="server__playsers">
-					<span class="online" set:text={data.players.online} />
-					/
-					<span class="max" set:text={data.players.max} />
-				</div>
-			</div>
-		</Card>
-		<Spacer />
-	}
+	<Spacer />
+
+	<Card>
+		<CardServer client:load data={data} />
+	</Card>
+	
+	<Spacer />
 
 	<Card title="Последние новости">
 		Деда кусили за печеньку!
@@ -56,8 +50,5 @@ import plugins from '@data/plugins.json';
 </Landing>
 
 <style>
-.server {
-	font-family: 'Minecraft';
 
-}
 </style>
