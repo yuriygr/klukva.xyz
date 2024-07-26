@@ -10,8 +10,8 @@ const title = 'ШизаЛенд'
 const description = 'Мой маненький ванильный сервер <3'
 const address = 'mc.shizo-land.ru'
 
-const response = await fetch(`https://api.mcsrvstat.us/3/${address}`);
-const data = await response.json()
+const response = await fetch(`https://api.mcsrvstat.us/3/${address}`)
+const serverState = await response.json()
 
 // Plugins
 import plugins from '@data/plugins.json';
@@ -22,16 +22,8 @@ import plugins from '@data/plugins.json';
 	<Spacer />
 
 	<Card>
-		<CardServer client:load data={data} />
+		<CardServer client:only="react" address={address} defaultState={serverState} />
 	</Card>
-	
-	<Spacer />
-
-	<Card title="Последние новости">
-		Деда кусили за печеньку!
-	</Card>
-	
-	<Spacer />
 
 	<Card title="Рекомендуемые моды" mode="list">
 		{ plugins.map(item =>
@@ -39,13 +31,9 @@ import plugins from '@data/plugins.json';
 		)}
 	</Card>
 
-	<Spacer />
-
-	<Card title="Fucking astro shit">
-		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur doloribus, explicabo porro fugiat praesentium saepe sapiente nam labore ducimus magni dicta quibusdam voluptates esse reiciendis, non unde veritatis maiores officiis.
+	<Card title="Последние новости">
+		Деда кусили за письку!
 	</Card>
-
-	<Spacer />
 
 </Landing>
 

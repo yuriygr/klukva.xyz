@@ -1,15 +1,28 @@
-export default function Card({ data }) {
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import type { ServerState } from '@_types/server_state.ts'
+
+export default function Card({ address, defaultState }) {
+	const [state, setState] = useState<ServerState>(defaultState);
+
+	useEffect(() => {
+		axios.get(`https://api.mcsrvstat.us/3/${address}`)
+		.then(res => {
+			setState(res.data)
+		})
+
+  }, []);
+
   return (
 		<div className="server">
-			
-			<pre>{JSON.stringify(data)}</pre>
-			{ data.online &&
+			{ state.online &&
 			<>
-					<div className="server__motd">{data.motd.html}</div>
+					<div className="server__motd" dangerouslySetInnerHTML={{ __html: state.motd.html }} />
 					<div className="server__playsers">
-						<span className="online">{data.players.online}</span>
+						<span className="online">{state.players.online}</span>
 						/
-						<span className="max">{data.players.max}</span>
+						<span className="max">{state.players.max}</span>
 					</div>
 				</>
 			}
