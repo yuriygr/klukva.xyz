@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Plasmo Voice",
+		"info": "Мод голосового чата с функцией определения местоположения по звуку и множеством функций",
+		"url": "https://modrinth.com/plugin/plasmo-voice",
+		"icon": "https://cdn.modrinth.com/data/1bZhdhsH/icon.png"
+	},
+	{
+		"title": "Xaero's Minimap",
+		"info": "Отображает карту мира, игроков, мобов, сущностей в углу экрана. Позволяет создавать путевые точки",
+		"url": "https://modrinth.com/mod/xaeros-minimap",
+		"icon": "https://cdn.modrinth.com/data/1bokaNcj/80eb00784e250b99fb1789da35869387d14d5637.png"
+	},
+	{
+		"title": "WI Zoom",
+		"info": "Мод для Minecraft, предлагающий 50-кратное увеличение с плавным движением камеры",
+		"url": "https://modrinth.com/mod/wi-zoom",
+		"icon": "https://cdn.modrinth.com/data/o7DitHWP/42141bea19c86ee3a0034c3d1eb844c0d9b30454.png"
+	},
+	{
+		"title": "Sodium",
+		"info": "Самый быстрый и совместимый мод оптимизации рендеринга для Minecraft",
+		"url": "https://modrinth.com/mod/sodium",
+		"icon": "https://cdn.modrinth.com/data/AANobbMI/icon.png"
+	},
+	{
+		"title": "Sodium Extra",
+		"info": "Дополнение Sodium, добавляющее функции, которых не должно быть в Sodium",
+		"url": "https://modrinth.com/mod/sodium-extra",
+		"icon": "https://cdn.modrinth.com/data/PtjYWJkn/icon.png"
+	}
+]

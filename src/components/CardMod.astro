@@ -10,15 +10,16 @@ const { title, info, url, icon } = Astro.props;
 ---
 
 
-<a class="card-mod" target="_blanl" href={url}>
+<div class="card-mod">
   <div class="card-mod__icon">
     <img src={icon} />
   </div>
   <div class="card-mod__content">
     <div class="card-mod__title" set:text={title}/>
     <div class="card-mod__info" set:text={info}/>
+    <a class="card-mod__open" target="_blanl" href={url}>Подробнее</div>
   </div>
-</a>
+</div>
 
 <script>
 
@@ -34,20 +35,12 @@ $icon-size: 48px;
   position: relative;
   background: #373737;
   color: #aaaaaa;
+  text-shadow: 1px 1px 0 #2a2a2a;
   border: 2px solid;
   border-color: #000000 #8b8b8b #8b8b8b #000000;
   padding: 1rem;
   user-select: none;
-  cursor: pointer;
   text-decoration: none;
-
-  @media(hover: hover) {
-    &:hover {
-      background: #323232;
-      color: #b0b0b0;
-      text-decoration: none;
-    }
-  }
 
   &::before,
   &::after {
@@ -81,6 +74,7 @@ $icon-size: 48px;
     white-space: pre-line;
     word-wrap: break-word;
     word-break: break-word;
+    color: #d5d5d5;
     font-size: 1.3rem;
     line-height: calc(1.4 * 1em);
     margin-bottom: .25rem;
@@ -90,9 +84,23 @@ $icon-size: 48px;
     white-space: pre-line;
     word-wrap: break-word;
     word-break: break-word;
-    font-weight: 400;
+    color: #aaa;
     font-size: 1.2rem;
     line-height: calc(1.4 * 1em);
+    margin-bottom: .5rem;
+  }
+
+  &__open {
+    color: #bababa;
+    font-size: 1.2rem;
+    line-height: calc(1.4 * 1em);
+    text-decoration: underline;
+
+    @media(hover: hover) {
+      &:hover {
+        color: #d5d5d5;
+      }
+    }
   }
 }
 </style>
