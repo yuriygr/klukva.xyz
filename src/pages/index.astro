@@ -17,18 +17,28 @@ const data = await response.json();
 const plugins = [
 	{
 		title: 'Plasmo Voice',
-		info: 'Голосовой чат в игре',
+		info: 'Удобный голосовой чат в игре',
 		url: 'https://modrinth.com/plugin/plasmo-voice'
 	},
 	{
-		title: 'CoreProtect',
-		info: 'Лучший инструмент устранения последствий неверных решений',
-		url: 'https://modrinth.com/plugin/coreprotect'
+		title: "Xaero's Minimap",
+		info: 'Мини-карта для лучшей навигации по миру',
+		url: 'https://modrinth.com/mod/xaeros-minimap'
 	},
 	{
-		title: 'BlazeandCave',
-		info: 'Добавляет свыше тысячи достижений в мир сервера',
-		url: 'https://modrinth.com/datapack/blazeandcaves-advancements-pack'
+		title: 'WI Zoom',
+		info: 'Отличный инструмент чтобы всматриваться в даль',
+		url: 'https://modrinth.com/mod/wi-zoom'
+	},
+	{
+		title: 'Sodium',
+		info: '',
+		url: 'https://modrinth.com/mod/sodium'
+	},
+	{
+		title: 'Sodium Extra',
+		info: '',
+		url: 'https://modrinth.com/mod/sodium-extra'
 	}
 ]
 
@@ -55,7 +65,7 @@ const plugins = [
 	
 	<Spacer />
 
-	<Card title="Установленные моды">
+	<Card title="Рекомендуемые моды">
 		{ JSON.stringify(plugins) }
 	</Card>
 
@@ -63,7 +73,6 @@ const plugins = [
 
 	<Card title="Fucking astro shit">
 		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur doloribus, explicabo porro fugiat praesentium saepe sapiente nam labore ducimus magni dicta quibusdam voluptates esse reiciendis, non unde veritatis maiores officiis.
-
 	</Card>
 
 </Landing>
