@@ -1,23 +1,22 @@
 ---
 interface Props {
   title?: string;
-  info?: string;
+  caption?: string;
+  date_added?: string;
   url?: string;
-  icon?: string;
 }
 
-const { title, info, url, icon } = Astro.props;
+const { title, caption, url, date_added } = Astro.props;
 ---
 
-<div class="card-mod">
-  <div class="card-mod__icon">
-    <img src={icon} />
-  </div>
-  <div class="card-mod__content">
-    <div class="card-mod__title" set:text={title}/>
-    <div class="card-mod__info" set:text={info}/>
-    <div class="card-mod__meta">
-      <a class="card-mod__open" target="_blank" href={url}>Подробнее</a>
+<div class="card-news">
+  <div class="card-news__content">
+    <div class="card-news__title" set:text={title}/>
+    <div class="card-news__caption" set:text={caption}/>
+    <div class="card-news__meta">
+      <span set:text={date_added} />
+      |
+      <a class="card-news__open" href={url}>Читать далее</a>
     </div>
   </div>
 </div>
@@ -29,10 +28,8 @@ const { title, info, url, icon } = Astro.props;
 <style lang="scss">
 $icon-size: 48px;
 
-.card-mod {
+.card-news {
 	font-family: 'Minecraft';
-  display: grid;
-  grid-template-columns: $icon-size auto;
   position: relative;
   background: #373737;
   color: #aaaaaa;
@@ -56,20 +53,9 @@ $icon-size: 48px;
   &::before { bottom: -2px; left: -2px; }
   &::after { top: -2px; right: -2px; }
 
-  &__icon {
-    img {
-      background: #c6c6c6;
-      border-radius: 8px;
-      display: block;
-      height: $icon-size;
-      width: $icon-size;
-    }
-  }
-
   &__content {
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
   }
 
   &__title {
@@ -82,7 +68,7 @@ $icon-size: 48px;
     margin-bottom: .25rem;
   }
 
-  &__info {
+  &__caption {
     white-space: pre-line;
     word-wrap: break-word;
     word-break: break-word;

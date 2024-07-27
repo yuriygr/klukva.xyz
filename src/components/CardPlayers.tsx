@@ -3,8 +3,10 @@ import axios from 'axios';
 
 import type { ServerState } from '@_types/server_state.ts'
 
-export default function Card({ address, defaultState }) {
-	const [state, setState] = useState<ServerState>(defaultState);
+export default function CardPlayers({ address }) {
+	const [state, setState] = useState<ServerState>({
+		online: false
+	});
 
 	useEffect(() => {
 		axios.get(`https://api.mcsrvstat.us/3/${address}`)
@@ -18,7 +20,6 @@ export default function Card({ address, defaultState }) {
 		<div className="server">
 			{ state.online &&
 			<>
-					<div className="server__motd" dangerouslySetInnerHTML={{ __html: state.motd.html }} />
 					<div className="server__playsers">
 						<span className="online">{state.players.online}</span>
 						/

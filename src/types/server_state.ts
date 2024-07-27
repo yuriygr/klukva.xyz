@@ -1,15 +1,15 @@
 export interface ServerState {
-  ip:           string;
-  port:         number;
-  debug:        Debug;
-  motd:         MOTD;
-  players:      Players;
-  version:      string;
+  ip?:           string;
+  port?:         number;
+  debug?:        Debug;
+  motd?:         MOTD;
+  players?:      Players;
+  version?:      string;
   online:       boolean;
-  protocol:     Protocol;
-  hostname:     string;
-  icon:         string;
-  eula_blocked: boolean;
+  protocol?:     Protocol;
+  hostname?:     string;
+  icon?:         string;
+  eula_blocked?: boolean;
 }
 
 export interface Debug {

@@ -22,6 +22,10 @@
   }
 }
 
+:root {
+  --x-box-shadow: inset -2px -3px #0006, inset 2px 2px #fff7;
+}
+
 @font-face {
   font-family: Minecraft;
   src: local('Minecraft-ru'),
