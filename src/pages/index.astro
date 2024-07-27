@@ -1,11 +1,12 @@
 ---
 import Landing from '@layouts/Landing.astro';
 
-import MButton from '@components/MButton.vue';
-import Card from '@components/Card.astro';
+import MCButton from '@components/mc/Button.vue';
+import MCCard from '@components/mc/Card.astro';
+
 import CardMod from '@components/CardMod.astro';
 import CardNews from '@components/CardNews.astro';
-import CardPlayers from '@components/CardPlayers';
+import ListOfPlayers from '@components/ListOfPlayers.vue';
 import Spacer from '@components/Spacer.astro';
 
 const title = 'ШизаЛенд'
@@ -19,29 +20,29 @@ import plugins from '@_data/plugins.json';
 
 <Landing title={title} description={description}>
 
-	<MButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Скачать лаунчер</MButton>
+	<MCButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Скачать лаунчер</MCButton>
 
-	<MButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</MButton>
+	<MCButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</MCButton>
 
 	<Spacer />
 
-	<Card title="Список активных игроков">
-		<CardPlayers client:only="react" address={address} />
-	</Card>
+	<MCCard title="Список активных игроков">
+		<ListOfPlayers client:only="vue" address={address} />
+	</MCCard>
 
-	<Card title="Рекомендуемые моды" mode="list">
+	<MCCard title="Рекомендуемые моды" mode="list">
 		{ plugins.map(item =>
 			<CardMod title={item.title} info={item.info} url={item.url} icon={item.icon} />
 		)}
-	</Card>
+	</MCCard>
 
-	<Card title="Последние новости" mode="list">
+	<MCCard title="Последние новости" mode="list">
 		<CardNews title="Деда кусили за хуй!" caption="И вы не поверите кто это был..." date_added="25.08.1994 в 14:90" />
 
 		<Spacer />
 
-		<MButton stretched="true" component="a">Все новости</MButton>
-	</Card>
+		<MCButton stretched="true" component="a">Все новости</MCButton>
+	</MCCard>
 
 </Landing>
 

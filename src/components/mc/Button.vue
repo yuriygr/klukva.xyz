@@ -1,12 +1,12 @@
 <template>
   <component :is="component" :class="elClass">
-    <span class="m-button__label"><slot /></span>
+    <span class="mc-button__label"><slot /></span>
   </component>
 </template>
 
 <script>
 export default {
-  name: 'm-button',
+  name: 'mc-button',
   props: {
     // Mods
     size: {
@@ -49,14 +49,14 @@ export default {
   computed: {
     elClass() {
       return [
-        'm-button',
-        'm-button--size-' + this.size,
-        'm-button--mode-' + this.mode,
+        'mc-button',
+        'mc-button--size-' + this.size,
+        'mc-button--mode-' + this.mode,
         {
-          'm-button--stretched': this.stretched,
-          'm-button--loading': this.loading,
-          'm-button--disabled': this.disabled,
-          'm-button--active': this.active
+          'mc-button--stretched': this.stretched,
+          'mc-button--loading': this.loading,
+          'mc-button--disabled': this.disabled,
+          'mc-button--active': this.active
         }
       ]
     }
@@ -66,41 +66,41 @@ export default {
 </script>
 
 <style lang="scss">
-.m-button {
-  --m-button--min-width: 80px;
+.mc-button {
+  --mc-button--min-width: 80px;
 
   &--size-s {
-    --m-button--height: 28px;
-    --m-button--font-size: 1.4rem;
-    --m-button--padding: 16px;
+    --mc-button--height: 28px;
+    --mc-button--font-size: 1.4rem;
+    --mc-button--padding: 16px;
   }
   &--size-m {
-    --m-button--height: 36px;
-    --m-button--font-size: 1.6rem;
-    --m-button--padding: 10px;
+    --mc-button--height: 36px;
+    --mc-button--font-size: 1.6rem;
+    --mc-button--padding: 10px;
   }
   &--size-l {
-    --m-button--height: 38px;
-    --m-button--font-size: 1.8rem;
-    --m-button--padding: 16px;
+    --mc-button--height: 38px;
+    --mc-button--font-size: 1.8rem;
+    --mc-button--padding: 16px;
   }
 }
 
-.m-button {
-  --m-button--background: #999 url('../assets/new/button.png') center / cover;
-  --m-button--color: #DDD;
+.mc-button {
+  --mc-button--background: #999 url('/src/assets/new/button.png') center / cover;
+  --mc-button--color: #DDD;
 
-  --m-button--background-hover: rgba(100, 100, 255, .45);
-  --m-button--color-hover: #FFFFA0;
+  --mc-button--background-hover: rgba(100, 100, 255, .45);
+  --mc-button--color-hover: #FFFFA0;
 
-  --m-button--background-active: #bdb985;
-  --m-button--color-active: #262339;
+  --mc-button--background-active: #bdb985;
+  --mc-button--color-active: #262339;
 }
 
-.m-button {
+.mc-button {
   $parent: &;
 
-  background: var(--m-button--background);
+  background: var(--mc-button--background);
 	border: 2px solid #373737;
 
 	image-rendering: pixelated;
@@ -127,8 +127,8 @@ export default {
       text-decoration: none;
 
       #{$parent}__label {
-        background-color: var(--m-button--background-hover);
-        color: var(--m-button--color-hover);
+        background-color: var(--mc-button--background-hover);
+        color: var(--mc-button--color-hover);
         text-shadow: 2px 2px #202013CC;
         text-decoration: none;
       }
@@ -137,18 +137,18 @@ export default {
   
   &__label {
     box-shadow: var(--x-box-shadow);
-    color: var(--m-button--color);
+    color: var(--mc-button--color);
     text-shadow: 2px 2px #000A;
     
     max-width: 100%;
-    min-height: var(--m-button--height);
-    min-width: var(--m-button--min-width);
+    min-height: var(--mc-button--height);
+    min-width: var(--mc-button--min-width);
     
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 0 var(--m-button--padding);
+    padding: 0 var(--mc-button--padding);
   }
 
 
@@ -161,8 +161,8 @@ export default {
   }
 
   &--active {
-    background: var(--m-button--background-active);
-    color: var(--m-button--color-active);
+    background: var(--mc-button--background-active);
+    color: var(--mc-button--color-active);
   }
 
   &--disabled {
@@ -171,8 +171,8 @@ export default {
     cursor: default;
     @media(hover: hover) {
       &:hover {
-        background: var(--m-button--background);
-        color: var(--m-button--color);
+        background: var(--mc-button--background);
+        color: var(--mc-button--color);
       }
     }
   }
