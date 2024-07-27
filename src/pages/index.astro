@@ -27,7 +27,7 @@ import plugins from '@_data/plugins.json';
 		{address}
 		
 		<McButtonsGroup slot="footer">
-			<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Скачать лаунчер</McButton>
+			<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Лаунчер</McButton>
 			<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</McButton>
 		</McButtonsGroup>
 	</MCCard>
@@ -36,15 +36,18 @@ import plugins from '@_data/plugins.json';
 		<ListOfPlayers client:only="vue" address={address} />
 	</MCCard>
 
-	<MCCard title="Рекомендуемые моды" mode="list">
+	<MCCard title="Рекомендуемые моды" mode="blank">
 		{ plugins.map(item =>
 			<CardMod title={item.title} info={item.info} url={item.url} icon={item.icon} />
 		)}
+
+		<McButtonsGroup slot="footer">
+			<McButton stretched="true" component="a" href="https://modrinth.com/collection/pDf8krcz" target="_blank">Скачать сборку</McButton>
+		</McButtonsGroup>
 	</MCCard>
 
-	<MCCard title="Последние новости" mode="list">
+	<MCCard title="Последние новости" mode="blank">
 		<CardNews title="Деда кусили за хуй!" caption="И вы не поверите кто это был..." date_added="25.08.1994 в 14:90" />
-
 
 		<McButtonsGroup slot="footer">
 			<McButton stretched="true" component="a" href="/news/">Все новости</McButton>
