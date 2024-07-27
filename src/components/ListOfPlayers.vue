@@ -1,6 +1,6 @@
 
 <template>
-	{{ serverDate }}
+	{{ players }}
 </template>
 
 <script setup>
@@ -11,11 +11,11 @@ const props = defineProps({
   address: String
 });
 
-const serverDate = ref({});
+const players = ref({});
 
 axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
 .then(res => {
-	serverDate.value = res.data
+	players.value = res.data.players
 })
 .catch(console.log)
 </script>

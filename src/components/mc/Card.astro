@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { title, subtitle, mode = 'plain' } = Astro.props;
+
+const hasFooter = Astro.slots.has("footer");
 ---
 
 
@@ -19,6 +21,12 @@ const { title, subtitle, mode = 'plain' } = Astro.props;
 	<div class={`card-content-${mode}`}>
 		<slot>
 	</div>
+
+	{ hasFooter &&
+		<div class="card-footer">
+			<slot name="footer" />
+		</div>
+	}
 </div>
 
 <script>
@@ -68,6 +76,10 @@ const { title, subtitle, mode = 'plain' } = Astro.props;
 	}
 
 	&-content-list { }
+
+	&-footer {
+		margin-top: .6rem;
+	}
 }
 
 </style>
