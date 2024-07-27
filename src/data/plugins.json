@@ -34,5 +34,11 @@
 		"info": "Дополнение Sodium, добавляющее функции, которых не должно быть в Sodium",
 		"url": "https://modrinth.com/mod/sodium-extra",
 		"icon": "https://cdn.modrinth.com/data/PtjYWJkn/icon.png"
+	},
+	{
+		"title": "Gamma Utils",
+		"info": "Ночи будут выглядеть как день, а пещеры будут выглядеть так, как будто они полностью освещены",
+		"url": "https://modrinth.com/mod/gamma-utils",
+		"icon": "https://cdn.modrinth.com/data/wdLuzzEP/b6014c210bbedacf610f7d2dba55149dae9677c8.png"
 	}
 ]
