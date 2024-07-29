@@ -19,7 +19,7 @@ import plugins from '@_data/plugins.json';
 import { getCollection } from 'astro:content';
 
 const allNews = (await getCollection("news")).sort(
-  (a, b) => Date.parse(b.data.date) - Date.parse(a.data.date)
+  (a, b) => Date.parse(b.data.date.toString()) - Date.parse(a.data.date.toString())
 );
 
 ---
@@ -50,11 +50,7 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Последние новости" mode="blank">
-		{
-			allNews.map(news => (
-				<CardNews news={news} />
-			))
-		}
+		{ allNews.map(news => <CardNews news={news} /> ) }
 		
 		<McButtonsGroup slot="footer">
 			<McButton stretched="true" component="a" href="/news/">Все новости</McButton>
