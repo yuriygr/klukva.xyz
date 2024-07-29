@@ -25,8 +25,10 @@ import plugins from '@_data/plugins.json';
 
 	<MCCard mode="blank">
 		<CardAddress address={address} />
-		
-		<McButtonsGroup slot="footer">
+	</MCCard>
+
+	<MCCard mode="blank">
+		<McButtonsGroup>
 			<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Лаунчер</McButton>
 			<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</McButton>
 		</McButtonsGroup>
@@ -55,46 +57,6 @@ import plugins from '@_data/plugins.json';
 	</MCCard>
 
 	<Spacer />
-
-	<MCCard title="Элементы UI Kit">
-
-		<McButton mode="default">Обычна кнопка</McButton>
-
-		<Spacer />
-
-		<McButton mode="green">Зеленая кнопка</McButton>
-
-		<Spacer />
-
-		<McButton mode="orange">Оранжевая кнопка</McButton>
-
-		<Spacer />
-
-		<McButton stretched="true">Вытянутая кнопка</McButton>
-
-		<Spacer />
-
-		<McButtonsGroup>
-			<McButton stretched="true">Вытянутая кнопка</McButton>
-			<McButton>Обычная кнопка</McButton>
-		</McButtonsGroup>
-
-		<Spacer />
-		
-		<McButtonsGroup>
-			<McButton stretched="true">50%</McButton>
-			<McButton stretched="true">50%</McButton>
-		</McButtonsGroup>
-
-		<Spacer />
-
-		<McButton size="s">Маленькая кнопка</McButton>
-
-		<Spacer />
-
-		<McButton size="l">Большая кнопка</McButton>
-
-	</MCCard>
 
 </Landing>
 

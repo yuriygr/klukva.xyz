@@ -1,14 +1,21 @@
 
 <template>
-	<div class="players-online">{{ players.online }} / {{ players.max }}</div>
-	<div class="players-list">
-		<div class="player-item" v-for="player in players.list" :key="`player-${player.uuid}`">
-			<span>{{ player.name }}</span>
+	<PlaceholderLoading v-if="loading" />
+
+	<template v-else>
+		<div class="players-online">{{ players.online }} / {{ players.max }}</div>
+		<div class="players-list">
+			<div class="player-item" v-for="player in players.list" :key="`player-${player.uuid}`">
+				<span>{{ player.name }}</span>
+			</div>
 		</div>
-	</div>
+	</template>
+
 </template>
 
 <script setup>
+import PlaceholderLoading from '@components/PlaceholderLoading.vue';
+
 import { ref, defineProps } from 'vue';
 import axios from 'axios';
 
@@ -16,6 +23,7 @@ const props = defineProps({
   address: String
 });
 
+const loading = ref(true);
 const players = ref({});
 
 axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
@@ -23,6 +31,7 @@ axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
 	players.value = res.data.players
 })
 .catch(console.log)
+.then(_ => loading.value = false)
 </script>
 
 <style lang="scss">

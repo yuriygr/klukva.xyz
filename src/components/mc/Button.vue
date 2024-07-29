@@ -71,17 +71,17 @@ export default {
 
   &--size-s {
     --mc-button--height: 28px;
-    --mc-button--font-size: 1.4rem;
+    --mc-button--font-size: 1.3rem;
     --mc-button--padding: 16px;
   }
   &--size-m {
     --mc-button--height: 36px;
-    --mc-button--font-size: 1.6rem;
+    --mc-button--font-size: 1.4rem;
     --mc-button--padding: 10px;
   }
   &--size-l {
     --mc-button--height: 38px;
-    --mc-button--font-size: 1.8rem;
+    --mc-button--font-size: 1.4rem;
     --mc-button--padding: 16px;
   }
 }
@@ -119,9 +119,6 @@ export default {
 
   background: var(--mc-button--background);
 	border: 2px solid #373737;
-  max-width: 100%;
-  min-height: var(--mc-button--height);
-  min-width: var(--mc-button--min-width);
 
 	image-rendering: pixelated;
 	cursor: pointer;
@@ -160,6 +157,7 @@ export default {
     box-shadow: var(--x-box-shadow);
     color: var(--mc-button--color);
     text-shadow: 2px 2px #000A;
+    font-size: var(--mc-button--font-size);
     
     max-width: 100%;
     min-height: var(--mc-button--height);
