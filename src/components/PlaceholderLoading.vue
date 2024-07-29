@@ -32,7 +32,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 1rem 1rem;
+  min-height: 104px;
 }
 
 .spinner {

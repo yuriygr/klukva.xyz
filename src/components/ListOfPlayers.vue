@@ -1,8 +1,12 @@
 
 <template>
-	<PlaceholderLoading v-if="loading" />
 
-	<template v-else>
+	<template v-if="players.online == 0">
+		<placeholder-loading v-if="loading" />
+		<placeholder v-else>На сервере никого нет :(</placeholder>
+	</template>
+
+	<template v-if="players.online > 0">
 		<div class="players-online">{{ players.online }} / {{ players.max }}</div>
 		<div class="players-list">
 			<div class="player-item" v-for="player in players.list" :key="`player-${player.uuid}`">
@@ -15,6 +19,7 @@
 
 <script setup>
 import PlaceholderLoading from '@components/PlaceholderLoading.vue';
+import Placeholder from '@components/Placeholder.vue';
 
 import { ref, defineProps } from 'vue';
 import axios from 'axios';
