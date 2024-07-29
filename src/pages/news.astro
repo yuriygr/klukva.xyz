@@ -11,7 +11,7 @@ import Spacer from '@components/Spacer.astro';
 import { getCollection } from 'astro:content';
 
 const allNews = (await getCollection("news")).sort(
-  (a, b) => Date.parse(b.data.date_added) - Date.parse(a.data.date_added)
+  (a, b) => Date.parse(b.data.date) - Date.parse(a.data.date)
 );
 ---
 
@@ -28,7 +28,7 @@ const allNews = (await getCollection("news")).sort(
 	<MCCard title="Новости" mode="blank">
 		{
 			allNews.map(news => (
-				<CardNews title={news.data.title} caption={news.data.caption} date_added={news.data.date_added} slug={news.slug} />
+				<CardNews news={news} />
 			))
 		}
 	</MCCard>

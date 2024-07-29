@@ -1,22 +1,22 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+
 interface Props {
-  title?: string;
-  caption?: string;
-  date_added?: Date;
-  slug?: string;
+  news: CollectionEntry<'news'>;
 }
 
-const { title, caption, slug, date_added } = Astro.props;
+const { news } = Astro.props;
 ---
 
 <div class="card-news">
   <div class="card-news__content">
-    <div class="card-news__title" set:text={title}/>
-    <div class="card-news__caption" set:text={caption}/>
+    <div class="card-news__title" set:text={news.data.title}/>
+    <div class="card-news__caption" set:text={news.data.caption}/>
     <div class="card-news__meta">
-      <span set:text={date_added.toISOString().slice(0,10)} />
-      |
-      <a class="card-news__open" href={`/news/${slug}`}>Читать далее</a>
+      <span set:text={news.data.date.toISOString().slice(0,10)} />
+      { news.body &&
+        <a class="card-news__open" href={`/news/${news.slug}`}>Читать далее</a>
+      }
     </div>
   </div>
 </div>
@@ -75,13 +75,15 @@ $icon-size: 48px;
     color: #aaa;
     font-size: 1.2rem;
     line-height: calc(1.4 * 1em);
-    margin-bottom: .75rem;
+    margin-bottom: 1rem;
   }
 
   &__meta {
     color: #bababa;
     font-size: 1.2rem;
     line-height: calc(1.4 * 1em);
+
+    * + * { margin-left: .75rem; }
   }
 
   &__open {

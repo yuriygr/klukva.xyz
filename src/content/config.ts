@@ -7,7 +7,7 @@ const news = defineCollection({
   schema: z.object({
     title: z.string(),
     caption: z.string(),
-    date_added: z.date(),
+    date: z.date(),
     relatedPosts: z.array(reference('news')).optional(),
   })
 });
