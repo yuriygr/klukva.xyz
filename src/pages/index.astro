@@ -11,27 +11,24 @@ import CardNews from '@components/CardNews.astro';
 import ListOfPlayers from '@components/ListOfPlayers.vue';
 import Spacer from '@components/Spacer.astro';
 
-const title = 'ШизоЛенд'
-const description = 'Мой маненький ванильный сервер <3'
 const address = 'mc.shizo-land.ru'
 
 // Plugins
 import plugins from '@_data/plugins.json';
 
+import { getCollection } from 'astro:content';
+
+const allNews = (await getCollection("news")).sort(
+  (a, b) => Date.parse(b.data.date_added) - Date.parse(a.data.date_added)
+);
+
 ---
 
-<Landing title={title} description={description}>
+<Landing>
 	<Spacer />
 
 	<MCCard mode="blank">
 		<CardAddress address={address} />
-	</MCCard>
-
-	<MCCard mode="blank">
-		<McButtonsGroup>
-			<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Лаунчер</McButton>
-			<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</McButton>
-		</McButtonsGroup>
 	</MCCard>
 
 	<MCCard title="Список активных игроков">
@@ -49,11 +46,21 @@ import plugins from '@_data/plugins.json';
 	</MCCard>
 
 	<MCCard title="Последние новости" mode="blank">
-		<CardNews title="Деда кусили за хуй!" caption="И вы не поверите кто это был..." date_added="25.08.1994 в 14:90" />
-
+		{
+			allNews.map(news => (
+				<CardNews title={news.data.title} caption={news.data.caption} date_added={news.data.date_added} slug={news.slug} />
+			))
+		}
+		
 		<McButtonsGroup slot="footer">
 			<McButton stretched="true" component="a" href="/news/">Все новости</McButton>
 		</McButtonsGroup>
+	</MCCard>
+
+
+	<MCCard title="Помощь">
+		<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Лаунчер</McButton>
+		<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</McButton>
 	</MCCard>
 
 	<Spacer />

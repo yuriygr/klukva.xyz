@@ -3,11 +3,13 @@ import '@south-paw/typeface-minecraft'
 import '@assets/vars.scss';
 
 interface Props {
-	title: string;
-	description?: string;
+	page_title?: string;
 }
 
-const { title, description } = Astro.props;
+const { page_title } = Astro.props;
+
+const title = 'ШизоЛенд'
+const description = 'Мой маненький ванильный сервер <3'
 ---
 
 <!doctype html>

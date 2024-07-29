@@ -1,0 +1,42 @@
+---
+import Landing from '@layouts/Landing.astro';
+
+import McButton from '@components/mc/Button.vue';
+import McButtonsGroup from '@components/ButtonsGroup.vue';
+import MCCard from '@components/mc/Card.astro';
+
+import CardNews from '@components/CardNews.astro';
+import Spacer from '@components/Spacer.astro';
+
+import { getCollection } from 'astro:content';
+
+const allNews = (await getCollection("news")).sort(
+  (a, b) => Date.parse(b.data.date_added) - Date.parse(a.data.date_added)
+);
+---
+
+<Landing page_title="Новости">
+	<Spacer />
+
+	<MCCard mode="blank">
+		<McButtonsGroup>
+			<McButton stretched="true" component="a" href="/">Назад</McButton>
+			<McButton mode="green">Обновить</McButton>
+		</McButtonsGroup>
+	</MCCard>
+
+	<MCCard title="Новости" mode="blank">
+		{
+			allNews.map(news => (
+				<CardNews title={news.data.title} caption={news.data.caption} date_added={news.data.date_added} slug={news.slug} />
+			))
+		}
+	</MCCard>
+
+	<Spacer />
+
+</Landing>
+
+<style>
+
+</style>

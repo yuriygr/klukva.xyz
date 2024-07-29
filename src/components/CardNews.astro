@@ -2,11 +2,11 @@
 interface Props {
   title?: string;
   caption?: string;
-  date_added?: string;
-  url?: string;
+  date_added?: Date;
+  slug?: string;
 }
 
-const { title, caption, url, date_added } = Astro.props;
+const { title, caption, slug, date_added } = Astro.props;
 ---
 
 <div class="card-news">
@@ -14,9 +14,9 @@ const { title, caption, url, date_added } = Astro.props;
     <div class="card-news__title" set:text={title}/>
     <div class="card-news__caption" set:text={caption}/>
     <div class="card-news__meta">
-      <span set:text={date_added} />
+      <span set:text={date_added.toISOString().slice(0,10)} />
       |
-      <a class="card-news__open" href={url}>Читать далее</a>
+      <a class="card-news__open" href={`/news/${slug}`}>Читать далее</a>
     </div>
   </div>
 </div>
