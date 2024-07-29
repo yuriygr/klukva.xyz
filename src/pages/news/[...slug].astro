@@ -1,0 +1,34 @@
+---
+import Landing from '@layouts/Landing.astro';
+import MCCard from '@components/mc/Card.astro';
+import McButton from '@components/mc/Button.vue';
+import Spacer from '@components/Spacer.astro';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allNews = await getCollection('news');
+
+  return allNews.map(news => ({
+    params: { slug: news.slug }, props: { entry: news }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+---
+
+<Landing page_title={entry.data.title}>
+	<Spacer />
+
+  <MCCard title={entry.data.title}>
+    {entry.body}
+
+    <div slot="footer">
+      <McButton stretched="true" component="a" href="/news/">Все новости</McButton>
+    </div>
+  </MCCard>
+
+	<Spacer />
+</Landing>
