@@ -1,7 +1,7 @@
 {
   "name": "shizo-land.ru",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev",

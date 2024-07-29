@@ -5,6 +5,7 @@ import McButton from '@components/mc/Button.vue';
 import McButtonsGroup from '@components/ButtonsGroup.vue';
 import MCCard from '@components/mc/Card.astro';
 
+import CardAddress from '@components/CardAddress.astro';
 import CardMod from '@components/CardMod.astro';
 import CardNews from '@components/CardNews.astro';
 import ListOfPlayers from '@components/ListOfPlayers.vue';
@@ -22,9 +23,8 @@ import plugins from '@_data/plugins.json';
 <Landing title={title} description={description}>
 	<Spacer />
 
-
-	<MCCard>
-		{address}
+	<MCCard mode="blank">
+		<CardAddress address={address} />
 		
 		<McButtonsGroup slot="footer">
 			<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Лаунчер</McButton>
@@ -55,6 +55,46 @@ import plugins from '@_data/plugins.json';
 	</MCCard>
 
 	<Spacer />
+
+	<MCCard title="Элементы UI Kit">
+
+		<McButton mode="default">Обычна кнопка</McButton>
+
+		<Spacer />
+
+		<McButton mode="green">Зеленая кнопка</McButton>
+
+		<Spacer />
+
+		<McButton mode="orange">Оранжевая кнопка</McButton>
+
+		<Spacer />
+
+		<McButton stretched="true">Вытянутая кнопка</McButton>
+
+		<Spacer />
+
+		<McButtonsGroup>
+			<McButton stretched="true">Вытянутая кнопка</McButton>
+			<McButton>Обычная кнопка</McButton>
+		</McButtonsGroup>
+
+		<Spacer />
+		
+		<McButtonsGroup>
+			<McButton stretched="true">50%</McButton>
+			<McButton stretched="true">50%</McButton>
+		</McButtonsGroup>
+
+		<Spacer />
+
+		<McButton size="s">Маленькая кнопка</McButton>
+
+		<Spacer />
+
+		<McButton size="l">Большая кнопка</McButton>
+
+	</MCCard>
 
 </Landing>
 

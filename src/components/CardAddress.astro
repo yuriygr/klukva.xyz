@@ -1,0 +1,49 @@
+---
+interface Props {
+	address?: string;
+}
+
+const { address = 'localhost:45545' } = Astro.props;
+import McButton from '@components/mc/Button.vue';
+
+---
+
+<div class="card-address">
+  <div class="card-address__field" id="code">
+    {address}
+  </div>
+  <McButton mode="green" size="l" id="copy">Копировать</McButton>
+</div>
+
+<script>
+	const code = document.getElementById('code');
+	const copy_button = document.getElementById('copy');
+	copy_button.addEventListener('click', () => {
+		navigator.clipboard.writeText(code.innerHTML);
+	});
+</script>
+
+<style lang="scss">
+.card-address {
+  display: flex;
+  justify-items: center;
+
+  * + * {
+    margin-left: .75rem;
+  }
+
+  &__field {
+    flex: 1;
+    background: #373737;
+    border: 2px solid;
+    border-color: #000000 #8b8b8b #8b8b8b #000000;
+    padding: 1rem;
+
+    font-family: 'Minecraft';
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: calc(1.2 * 1em);
+    height: 42px;
+  }
+}
+</style>

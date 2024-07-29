@@ -40,9 +40,9 @@ export default {
     },
     mode: {
       type: String,
-      default: 'primary',
+      default: 'default',
       validator(value) {
-        return ['primary', 'secondary', 'tertiary', 'outline', 'link'].includes(value)
+        return ['default', 'orange', 'green', 'red'].includes(value)
       }
     }
   },
@@ -88,13 +88,30 @@ export default {
 
 .mc-button {
   --mc-button--background: #999 url('/src/assets/new/button.png') center / cover;
-  --mc-button--color: #DDD;
 
-  --mc-button--background-hover: rgba(100, 100, 255, .45);
-  --mc-button--color-hover: #FFFFA0;
+  &--mode-default {
+    --mc-button--background-color: transparent;
+    --mc-button--background-color-hover: rgba(100, 100, 255, .45);
 
-  --mc-button--background-active: #bdb985;
-  --mc-button--color-active: #262339;
+    --mc-button--color: #DDD;
+    --mc-button--color-hover: #FFFFA0;
+  }
+
+  &--mode-orange {
+    --mc-button--background-color: rgba(201, 128, 11, 0.45);
+    --mc-button--background-color-hover: rgba(218, 153, 32, 0.45);
+
+    --mc-button--color: #ededed;
+    --mc-button--color-hover: #fff;
+  }
+
+  &--mode-green {
+    --mc-button--background-color: rgba(20, 187, 32, 0.3);
+    --mc-button--background-color-hover: rgba(47, 211, 59, 0.3);
+
+    --mc-button--color: #ededed;
+    --mc-button--color-hover: #fff;
+  }
 }
 
 .mc-button {
@@ -102,6 +119,9 @@ export default {
 
   background: var(--mc-button--background);
 	border: 2px solid #373737;
+  max-width: 100%;
+  min-height: var(--mc-button--height);
+  min-width: var(--mc-button--min-width);
 
 	image-rendering: pixelated;
 	cursor: pointer;
@@ -127,7 +147,7 @@ export default {
       text-decoration: none;
 
       #{$parent}__label {
-        background-color: var(--mc-button--background-hover);
+        background-color: var(--mc-button--background-color-hover);
         color: var(--mc-button--color-hover);
         text-shadow: 2px 2px #202013CC;
         text-decoration: none;
@@ -136,6 +156,7 @@ export default {
   }
   
   &__label {
+    background: var(--mc-button--background-color);
     box-shadow: var(--x-box-shadow);
     color: var(--mc-button--color);
     text-shadow: 2px 2px #000A;
@@ -150,8 +171,6 @@ export default {
 
     padding: 0 var(--mc-button--padding);
   }
-
-
 
   &--stretched {
     display: block;
