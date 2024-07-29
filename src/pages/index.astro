@@ -36,7 +36,7 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Список активных игроков">
-		<ListOfPlayers client:only="vue" address={address} />
+		<ListOfPlayers client:load  address={address} />
 	</MCCard>
 
 	<MCCard title="Рекомендуемые моды" mode="blank">
