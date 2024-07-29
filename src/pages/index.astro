@@ -29,6 +29,10 @@ const allNews = (await getCollection("news")).sort(
 
 	<MCCard mode="blank">
 		<CardAddress address={address} />
+
+		<McButtonsGroup slot="footer">
+			<McButton stretched="true" component="a" href="https://discord.gg/Nj9WGdFw" target="_blank">Discord</McButton>
+		</McButtonsGroup>
 	</MCCard>
 
 	<MCCard title="Список активных игроков">
