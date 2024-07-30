@@ -1,14 +1,11 @@
 
 <template>
-
 	<template v-if="loading">
 		<slot />
 	</template>
 
 	<template v-else>
-
 		<placeholder v-if="!online">Сервер оффлайн :(</placeholder>
-
 		<placeholder v-if="players.online == 0">На сервере никого нет :(</placeholder>
 
 		<template v-if="players.online > 0">
@@ -20,7 +17,6 @@
 			</div>
 		</template>
 	</template>
-
 </template>
 
 <script setup>
