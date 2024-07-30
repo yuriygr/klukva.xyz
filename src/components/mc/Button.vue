@@ -87,7 +87,7 @@ export default {
 }
 
 .mc-button {
-  --mc-button--background: #999 url('/src/assets/new/button.png') center / cover;
+  --mc-button--background: #999 url('/src/assets/background/button.png') center / cover;
 
   &--mode-default {
     --mc-button--background-color: transparent;

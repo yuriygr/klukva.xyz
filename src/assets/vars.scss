@@ -1,6 +1,6 @@
 :root {
   --x-body--backgroud: #fff;
-  --x-backgroud-image: url('./new/grass.jpg'), url('./new/girt.jpg');
+  --x-backgroud-image: url('./backgroud/grass.jpg'), url('./backgroud/girt.jpg');
   --x-body--color: #495057;
 
   --x-content__title--color: #212529;
@@ -12,7 +12,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --x-body--backgroud: #111;
-    --x-backgroud-image: url('./new/grass.jpg'), url('./new/girt.jpg');
+    --x-backgroud-image: url('./backgroud/grass.jpg'), url('./backgroud/girt.jpg');
     --x-body--color: #adb5bd;
 
     --x-content__title--color: #f8f9fa;
