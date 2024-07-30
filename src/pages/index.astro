@@ -1,5 +1,6 @@
 ---
 import Landing from '@layouts/Landing.astro';
+import Logo from '@components/Logo.astro';
 
 import McButton from '@components/mc/Button.vue';
 import McButtonsGroup from '@components/ButtonsGroup.vue';
@@ -25,6 +26,9 @@ const allNews = (await getCollection("news")).sort(
 ---
 
 <Landing>
+
+	<Logo />
+
 	<Spacer />
 
 	<MCCard mode="blank">
@@ -36,7 +40,7 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Список активных игроков">
-		<ListOfPlayers client:load  address={address} />
+		<ListOfPlayers client:only="vue" address={address} />
 	</MCCard>
 
 	<MCCard title="Рекомендуемые моды" mode="blank">

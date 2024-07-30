@@ -1,18 +1,21 @@
 
 <template>
 
-	<template v-if="players.online == 0">
-		<placeholder-loading v-if="loading" />
-		<placeholder v-else>На сервере никого нет :(</placeholder>
-	</template>
+	<placeholder-loading v-if="loading" />
+	<template v-else>
 
-	<template v-if="players.online > 0">
-		<div class="players-online">{{ players.online }} / {{ players.max }}</div>
-		<div class="players-list">
-			<div class="player-item" v-for="player in players.list" :key="`player-${player.uuid}`">
-				<span>{{ player.name }}</span>
+		<placeholder v-if="!online">Сервер оффлайн :(</placeholder>
+
+		<placeholder v-if="players.online == 0">На сервере никого нет :(</placeholder>
+
+		<template v-if="players.online > 0">
+			<div class="players-online">{{ players.online }} / {{ players.max }}</div>
+			<div class="players-list">
+				<div class="player-item" v-for="player in players.list" :key="`player-${player.uuid}`">
+					<span>{{ player.name }}</span>
+				</div>
 			</div>
-		</div>
+		</template>
 	</template>
 
 </template>
@@ -29,11 +32,13 @@ const props = defineProps({
 });
 
 const loading = ref(true);
+const online = ref(false);
 const players = ref({});
 
 axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
 .then(res => {
-	players.value = res.data.players
+	res.data.online && (online.value = res.data.online)
+	res.data.players && (players.value = res.data.players)
 })
 .catch(console.log)
 .then(_ => loading.value = false)

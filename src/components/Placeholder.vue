@@ -35,7 +35,8 @@ const props = defineProps({
   min-height: 104px;
 
   &__text {
-    color: #999;
+    text-shadow: 1px 1px 0 #2a2a2a;
+    color: #aaa;
     font-weight: 400;
     margin: 0;
     padding: 0;
