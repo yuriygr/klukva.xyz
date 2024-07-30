@@ -6,6 +6,7 @@ import McButton from '@components/mc/Button.vue';
 import McButtonsGroup from '@components/ButtonsGroup.vue';
 import MCCard from '@components/mc/Card.astro';
 
+import PlaceholderLoading from '@components/PlaceholderLoading.vue';
 import CardAddress from '@components/CardAddress.astro';
 import CardMod from '@components/CardMod.astro';
 import CardNews from '@components/CardNews.astro';
@@ -40,7 +41,9 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Список активных игроков">
-		<ListOfPlayers client:only="vue" address={address} />
+		<ListOfPlayers client:load address={address}>
+			<PlaceholderLoading  />
+		</ListOfPlayers>
 	</MCCard>
 
 	<MCCard title="Рекомендуемые моды" mode="blank">

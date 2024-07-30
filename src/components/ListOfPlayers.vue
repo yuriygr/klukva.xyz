@@ -1,7 +1,10 @@
 
 <template>
 
-	<placeholder-loading v-if="loading" />
+	<template v-if="loading">
+		<slot />
+	</template>
+
 	<template v-else>
 
 		<placeholder v-if="!online">Сервер оффлайн :(</placeholder>
@@ -21,7 +24,6 @@
 </template>
 
 <script setup>
-import PlaceholderLoading from '@components/PlaceholderLoading.vue';
 import Placeholder from '@components/Placeholder.vue';
 
 import { ref, defineProps } from 'vue';

@@ -1,5 +1,6 @@
 ---
 import LogoImage from '@assets/logo.png'
+import { Image } from 'astro:assets';
 
 interface Props {
   maxWidth?: number;
@@ -9,7 +10,7 @@ const { maxWidth = 360 } = Astro.props;
 ---
 
 <div class="logo">
-  <img src={LogoImage.src} alt="" draggable="false" />
+  <Image src={LogoImage} alt="" draggable="false" />
 </div>
 
 <style lang="scss" define:vars={{ 'max-width': `${maxWidth}px` }}>

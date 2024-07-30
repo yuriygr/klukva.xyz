@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, squooshImageService } from 'astro/config';
 import vue from "@astrojs/vue";
 
 export default defineConfig({
@@ -6,5 +6,8 @@ export default defineConfig({
   integrations: [vue()],
   devToolbar: {
     enabled: false
+  },
+  image: {
+    service: squooshImageService()
   }
 })
