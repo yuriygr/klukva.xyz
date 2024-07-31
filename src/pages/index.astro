@@ -47,9 +47,7 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Рекомендуемые моды" mode="blank">
-		{ allPlugins.map(item =>
-			<CardMod title={item.data.title} info={item.data.info} url={item.data.url} icon={item.data.icon} />
-		)}
+		{ allPlugins.map(item => <CardMod item={item} />) }
 
 		<McButtonsGroup slot="footer">
 			<McButton stretched="true" component="a" href="https://modrinth.com/collection/pDf8krcz" target="_blank">Скачать сборку</McButton>
@@ -57,7 +55,7 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Последние новости" mode="blank">
-		{ allNews.map(news => <CardNews news={news} /> ) }
+		{ allNews.map(news => <CardNews news={news} />) }
 		
 		<McButtonsGroup slot="footer">
 			<McButton stretched="true" component="a" href="/news/">Все новости</McButton>

@@ -1,23 +1,22 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+
 interface Props {
-  title?: string;
-  info?: string;
-  url?: string;
-  icon?: string;
+  item: CollectionEntry<'plugins'>;
 }
 
-const { title, info, url, icon } = Astro.props;
+const { item } = Astro.props;
 ---
 
 <div class="card-mod">
   <div class="card-mod__icon">
-    <img src={icon} />
+    <img src={item.data.icon} />
   </div>
   <div class="card-mod__content">
-    <div class="card-mod__title" set:text={title}/>
-    <div class="card-mod__info" set:text={info}/>
+    <div class="card-mod__title" set:text={item.data.title}/>
+    <div class="card-mod__info" set:text={item.data.info}/>
     <div class="card-mod__meta">
-      <a class="card-mod__open" target="_blank" href={url}>Подробнее</a>
+      <a class="card-mod__open" target="_blank" href={item.data.url}>Подробнее</a>
     </div>
   </div>
 </div>
