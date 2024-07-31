@@ -1,7 +1,16 @@
-// Import utilities from `astro:content`
 import { z, defineCollection, reference } from "astro:content";
 
-// Define a `type` and `schema` for each collection
+const plugins = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    info: z.string(),
+    url: z.string(),
+    icon: z.string(),
+    sort_order: z.number(),
+  })
+});
+
 const news = defineCollection({
   type: 'content',
   schema: z.object({
@@ -12,7 +21,19 @@ const news = defineCollection({
   })
 });
 
+const help = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    caption: z.string(),
+    date: z.date(),
+    relatedNews: z.array(reference('news')).optional(),
+  })
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
+  plugins,
   news,
+  help
 };

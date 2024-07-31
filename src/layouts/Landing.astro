@@ -1,6 +1,7 @@
 ---
 import '@south-paw/typeface-minecraft'
-import '@assets/vars.scss';
+import '@assets/scss/main.scss';
+import '@assets/scss/vars.scss';
 
 interface Props {
 	page_title?: string;
@@ -10,17 +11,22 @@ const { page_title } = Astro.props;
 
 const title = 'Клюква'
 const description = 'Наш маленький кислый сервер <3'
+
+const meta = {
+	description: "Маленький и уютный ванильный сервер с вайтлистом и платной проходкой (нет)"
+}
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 		<title>{title} / {description}</title>
+		<meta name="description" content={meta.description} />
+		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
 		<div class="container">
@@ -28,67 +34,3 @@ const description = 'Наш маленький кислый сервер <3'
 		</div>
 	</body>
 </html>
-
-<script>
-
-</script>
-
-<style lang="scss" is:global>
-* { box-sizing: border-box; }
-html { font-size: 62.5%; }
-
-body {
-	background-color: var(--x-body--background, #fff);
-  color: var(--x-body--color, #495057);
-  font-family: -apple-system,BlinkMacSystemFont,Lato,"Segoe UI",Verdana,Arial,sans-serif;
-  font-size: 14px;
-	font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0;
-	line-height: 1.6;
-	margin: 0;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -webkit-overflow-scrolling: touch;
-	-moz-osx-font-smoothing: auto;
-	-ms-text-size-adjust: 100%;
-
-	/* magic mobile viewport iOS bug fix */
-  /* also see: https://css-tricks.com/css-fix-for-100vh-in-mobile-webkit/ */
-  /* also see: https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/ */
-  height: -webkit-fill-available;
-  -webkit-overflow-scrolling: auto;
-
-	background-image: var(--x-background-image), var(--x-background-image);
-	background-repeat: repeat-x, repeat;
-	background-position: top left, top left;
-	background-size: auto 160px, auto 80px;
-}
-
-a {
-	-webkit-tap-highlight-color: transparent;
-	color: #e64980;
-	cursor: pointer;
-	text-decoration: none;
-	transition: opacity .1s ease-out, color .1s ease-out;
-
-  &.disabled { pointer-events: none; opacity: .8; }
-
-  @media(hover: hover) {
-		&:hover { text-decoration: underline; color: #c2255c; }
-	}
-
-  @media(active: active) {
-		&:active { color: #a61e4d; }
-	}
-
-  &:focus { outline: 0; }
-}
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 4%;
-  padding-right: 4%;
-  max-width: 600px;
-}
-</style>
