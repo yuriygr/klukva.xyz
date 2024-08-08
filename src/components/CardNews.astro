@@ -2,20 +2,20 @@
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  news: CollectionEntry<'news'>;
+  item: CollectionEntry<'news'>;
 }
 
-const { news } = Astro.props;
+const { item } = Astro.props;
 ---
 
 <div class="card-news">
   <div class="card-news__content">
-    <div class="card-news__title" set:text={news.data.title}/>
-    <div class="card-news__caption" set:text={news.data.caption}/>
+    <div class="card-news__title" set:text={item.data.title}/>
+    <div class="card-news__caption" set:text={item.data.caption}/>
     <div class="card-news__meta">
-      <span set:text={news.data.date.toISOString().slice(0,10)} />
-      { news.body &&
-        <a class="card-news__open" href={`/news/${news.slug}`}>Читать далее</a>
+      <span set:text={item.data.date.toISOString().slice(0,10)} />
+      { item.body &&
+        <a class="card-news__open" href={`/news/${item.slug}`}>Читать далее</a>
       }
     </div>
   </div>
