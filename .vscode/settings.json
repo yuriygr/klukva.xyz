@@ -9,6 +9,6 @@
   },
   "git.enabled": true,
   "git.path": null,
-  "git.autofetch": true,
+  "git.autofetch": "all",
   "window.title": "${activeEditorShort}${separator}shizo-land.ru${separator}${folderName}"
 }

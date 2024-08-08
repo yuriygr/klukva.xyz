@@ -75,6 +75,9 @@ axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
 	text-align: center;
 	margin-bottom: .5rem;
 	user-select: none;
+
+	color: #aaa;
+	text-shadow: 1px 1px 0 #2a2a2a;
 }
 
 .players-progressbar {
