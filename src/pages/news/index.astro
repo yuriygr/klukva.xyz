@@ -25,7 +25,7 @@ const allNews = (await getCollection("news")).sort(
 	</MCCard>
 
 	<MCCard title="Новости" mode="blank">
-		{ allNews.map(news => <CardNews news={news} /> ) }
+		{ allNews.map(item => <CardNews item={item} /> ) }
 	</MCCard>
 
 	<Spacer />
