@@ -26,7 +26,7 @@
 <script setup>
 import Placeholder from '@components/Placeholder.vue';
 
-import { ref, defineProps, computed } from 'vue';
+import { ref, computed } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
