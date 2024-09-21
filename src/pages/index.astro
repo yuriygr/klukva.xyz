@@ -13,6 +13,7 @@ import CardAddress from '@components/CardAddress.astro';
 import CardMod from '@components/CardMod.astro';
 import CardBuilding from '@components/CardBuilding.astro';
 import CardNews from '@components/CardNews.astro';
+import CardHelp from '@components/CardHelp.astro';
 import ListOfPlayers from '@components/ListOfPlayers.vue';
 import Spacer from '@components/Spacer.astro';
 
@@ -79,8 +80,11 @@ const allHelps = (await getCollection("help")).sort(
 	</MCCard>
 
 	<MCCard title="Помощь">
-		<McButton stretched="true" component="a" href="https://modrinth.com/app" target="_blank">Лаунчер</McButton>
-		<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать</McButton>
+		{ allHelps.map(item => <CardHelp item={item} />) }
+	</MCCard>
+
+	<MCCard mode="blank">
+		<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать за сервер</McButton>
 	</MCCard>
 
 	<Spacer />

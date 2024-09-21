@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  item: CollectionEntry<'help'>;
+}
+
+const { item } = Astro.props;
+---
+<a class="card-help" href={`/help/${item.slug}`}>
+  <div class="card-help__title" set:text={item.data.title}/>
+</a>
+
+<script>
+
+</script>
+
+<style lang="scss">
+.card-help {
+	font-family: 'Minecraft';
+  position: relative;
+  color: #bababa;
+  text-decoration: underline;
+  user-select: none;
+
+  display: flex;
+  flex-direction: column;
+
+  @media(hover: hover) {
+    &:hover {
+      color: #d5d5d5;
+    }
+  }
+
+  &__title {
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.3rem;
+    line-height: calc(1.4 * 1em);
+  }
+}
+</style>
