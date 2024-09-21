@@ -21,11 +21,13 @@ body {
   /* also see: https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/ */
   height: -webkit-fill-available;
   -webkit-overflow-scrolling: auto;
+  position: relative;
 
-	background-image: var(--x-background-image), var(--x-background-image);
-	background-repeat: repeat-x, repeat;
-	background-position: top left, top left;
-	background-size: auto 160px, auto 80px;
+  background-image: url('../background/grass.jpg'), url('../background/dirt.jpg');
+  background-repeat: repeat-x, repeat;
+  background-position: top left, top left;
+  background-size: auto 160px, auto 80px;
+
 }
 
 a {
@@ -49,6 +51,8 @@ a {
 }
 
 .container {
+  z-index: 200;
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   padding-left: 4%;

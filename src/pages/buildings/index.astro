@@ -1,0 +1,33 @@
+---
+import Landing from '@layouts/Landing.astro';
+
+import McButton from '@components/mc/Button.vue';
+import McButtonsGroup from '@components/ButtonsGroup.vue';
+import MCCard from '@components/mc/Card.astro';
+
+import CardBuilding from '@components/CardBuilding.astro';
+import Spacer from '@components/Spacer.astro';
+
+import { getCollection } from 'astro:content';
+
+const allBuildings = (await getCollection("buildings")).sort(
+  (a, b) => Date.parse(b.data.date.toString()) - Date.parse(a.data.date.toString())
+);
+---
+
+<Landing page_title="Постройки">
+	<Spacer />
+
+	<MCCard mode="blank">
+		<McButtonsGroup>
+			<McButton stretched="true" component="a" href="/">Назад</McButton>
+		</McButtonsGroup>
+	</MCCard>
+
+	<MCCard title="Постройки" mode="blank">
+		{ allBuildings.map(item => <CardBuilding item={item} /> ) }
+	</MCCard>
+
+	<Spacer />
+
+</Landing>

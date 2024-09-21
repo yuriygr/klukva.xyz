@@ -1,0 +1,104 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  item: CollectionEntry<'buildings'>;
+}
+
+const { item } = Astro.props;
+const formatCordoarias = (c) => {
+  return `X: ${c.x} Y: ${c.y} Z: ${c.z}`
+}
+---
+
+<div class="card-news">
+  <div class="card-news__content">
+    <div class="card-news__title" set:text={item.data.title}/>
+    <div class="card-news__caption" set:text={item.data.caption}/>
+    <div class="card-news__meta">
+      <span set:text={item.data.world} />
+      <span set:text={formatCordoarias(item.data.cordoarias)} />
+      { item.body &&
+        <a class="card-news__open" href={`/buildings/${item.slug}`}>Читать далее</a>
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+
+</script>
+
+<style lang="scss">
+$icon-size: 48px;
+
+.card-news {
+	font-family: 'Minecraft';
+  position: relative;
+  background: #373737;
+  color: #aaaaaa;
+  text-shadow: 1px 1px 0 #2a2a2a;
+  border: 2px solid;
+  border-color: #000000 #8b8b8b #8b8b8b #000000;
+  padding: 1rem;
+  user-select: none;
+  text-decoration: none;
+
+  &::before,
+  &::after {
+    content: " ";
+    position: absolute;
+    background-color: #373737;
+    height: 2px;
+    width: 2px;
+    pointer-events: none;
+  }
+
+  &::before { bottom: -2px; left: -2px; }
+  &::after { top: -2px; right: -2px; }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+    color: #d5d5d5;
+    font-size: 1.3rem;
+    line-height: calc(1.4 * 1em);
+    margin-bottom: .25rem;
+  }
+
+  &__caption {
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+    color: #aaa;
+    font-size: 1.2rem;
+    line-height: calc(1.4 * 1em);
+    margin-bottom: 1rem;
+  }
+
+  &__meta {
+    color: #bababa;
+    font-size: 1.2rem;
+    line-height: calc(1.4 * 1em);
+
+    * + * { margin-left: .75rem; }
+  }
+
+  &__open {
+    color: #bababa;
+    text-decoration: underline;
+
+    @media(hover: hover) {
+      &:hover {
+        color: #d5d5d5;
+      }
+    }
+  }
+}
+</style>

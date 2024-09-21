@@ -10,7 +10,6 @@ interface Props {
 const { page_title } = Astro.props;
 
 const title = 'Клюква'
-const description = 'Наш маленький кислый сервер <3'
 
 const meta = {
 	description: "Маленький и уютный ванильный сервер с вайтлистом и платной проходкой (нет)"
@@ -24,9 +23,16 @@ const meta = {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-		<title>{title} / {description}</title>
+		<title>{title} / {page_title}</title>
 		<meta name="description" content={meta.description} />
 		<meta name="generator" content={Astro.generator} />
+		<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-KM36S70L8Y"></script>
+		<script type="text/partytown">
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-NSQ8VJTT2M');
+		</script>
 	</head>
 	<body>
 		<div class="container">

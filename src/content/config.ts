@@ -25,9 +25,23 @@ const help = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    sort_order: z.number(),
+  })
+});
+
+const buildings = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
     caption: z.string(),
+    author: z.string(),
+    world: z.string(),
     date: z.date(),
-    relatedNews: z.array(reference('news')).optional(),
+    cordoarias: z.object({
+      x: z.number(),
+      y: z.number(),
+      z: z.number(),
+    }).optional(),
   })
 });
 
@@ -35,5 +49,6 @@ const help = defineCollection({
 export const collections = {
   plugins,
   news,
-  help
+  help,
+  buildings
 };
