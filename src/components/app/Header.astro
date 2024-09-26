@@ -1,0 +1,65 @@
+---
+
+---
+
+<div class="header">
+  <div class="header__container">
+    <div class="header__navigation navigation">
+      <div class="navigation__item"><a href="/">Главная</a></div>
+      <div class="navigation__item"><a href="/news/">Новости</a></div>
+      <div class="navigation__item"><a href="/buildings/">Постройки</a></div>
+      <div class="navigation__item"><a href="/help/">Помощь</a></div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+.header {
+  width: 100%;
+  height: 43px;
+  margin-bottom: 2rem;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+
+.navigation {
+  user-select: none;
+  display: inline-flex;
+  font-family: "Minecraft";
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & + & {
+      margin-left: 1.5rem;
+    }
+
+    a {
+      color: #e9e9e9;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+      white-space: pre-line;
+      word-wrap: break-word;
+      word-break: break-word;
+      font-size: 1.3rem;
+      line-height: 1.4em;
+
+      padding: 1rem 0;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+</style>

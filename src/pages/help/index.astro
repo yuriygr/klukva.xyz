@@ -1,0 +1,21 @@
+---
+import Landing from '@layouts/Landing.astro';
+
+import MCCard from '@components/mc/Card.astro';
+import CardHelp from '@components/CardHelp.astro';
+import Spacer from '@components/Spacer.astro';
+
+import { getCollection } from 'astro:content';
+
+const allHelps = (await getCollection("help")).sort(
+  (a, b) => Number(a.data.sort_order) - Number(b.data.sort_order)
+);
+---
+
+<Landing page_title="Помощь">
+	<MCCard title="Помощь">
+		{ allHelps.map(item => <CardHelp item={item} /> ) }
+	</MCCard>
+
+	<Spacer height="100" />
+</Landing>

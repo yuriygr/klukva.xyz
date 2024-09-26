@@ -1,8 +1,6 @@
 ---
 import Landing from '@layouts/Landing.astro';
 import MCCard from '@components/mc/Card.astro';
-import McButton from '@components/mc/Button.vue';
-import McButtonsGroup from '@components/ButtonsGroup.vue';
 import Spacer from '@components/Spacer.astro';
 
 import { getCollection } from 'astro:content';
@@ -25,10 +23,6 @@ const { Content } = await entry.render();
 
   <MCCard title={entry.data.title}>
     {entry.body}
-
-    <McButtonsGroup slot="footer">
-      <McButton stretched="true" component="a" href="/news/">Все новости</McButton>
-    </McButtonsGroup>
   </MCCard>
 
 	<Spacer />

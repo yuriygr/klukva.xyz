@@ -6,9 +6,9 @@ import Spacer from '@components/Spacer.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const allBuildings = await getCollection('buildings');
+  const allHelps = await getCollection('help');
 
-  return allBuildings.map(building => ({
+  return allHelps.map(building => ({
     params: { slug: building.slug }, props: { entry: building }
   }));
 }

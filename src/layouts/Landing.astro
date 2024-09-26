@@ -3,6 +3,8 @@ import '@south-paw/typeface-minecraft'
 import '@assets/scss/main.scss';
 import '@assets/scss/vars.scss';
 
+import AppHeader from '@components/app/Header.astro';
+
 interface Props {
 	page_title?: string;
 }
@@ -35,6 +37,7 @@ const meta = {
 		</script>
 	</head>
 	<body>
+		<AppHeader />
 		<div class="container">
 			<slot />
 		</div>
