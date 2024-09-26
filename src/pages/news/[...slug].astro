@@ -19,11 +19,9 @@ const { Content } = await entry.render();
 ---
 
 <Landing page_title={entry.data.title}>
-	<Spacer />
-
   <MCCard title={entry.data.title}>
     {entry.body}
   </MCCard>
 
-	<Spacer />
+	<Spacer height="100" />
 </Landing>
