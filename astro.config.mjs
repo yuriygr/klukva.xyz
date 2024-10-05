@@ -3,7 +3,7 @@ import vue from "@astrojs/vue";
 import partytown from '@astrojs/partytown'
 
 export default defineConfig({
-  site: 'https://shizo-land.ru',
+  site: 'https://klukva.xyz',
   integrations: [
     vue(),
     partytown({
