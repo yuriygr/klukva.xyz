@@ -9,6 +9,6 @@
   },
   "git.enabled": true,
   "git.path": null,
-  "window.title": "${activeEditorShort}${separator}shizo-land.ru${separator}${folderName}",
+  "window.title": "${activeEditorShort}${separator}klukva.xyz${separator}${folderName}",
   "git.confirmSync": false
 }
