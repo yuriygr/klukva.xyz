@@ -9,9 +9,7 @@ const { address = 'localhost:45545' } = Astro.props;
 ---
 
 <div class="card-address">
-  <div class="card-address__field" id="code">
-    {address}
-  </div>
+  <div class="card-address__field" id="code" set:text={address} />
   <Button mode="green" size="l" id="copy">Копировать</Button>
 </div>
 
