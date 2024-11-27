@@ -4,21 +4,16 @@ import { getCollection } from 'astro:content';
 import Landing from '@layouts/Landing.astro';
 import Logo from '@components/Logo.astro';
 
-import McButton from '@components/mc/Button.vue';
-import McButtonsGroup from '@components/ButtonsGroup.vue';
-import MCCard from '@components/mc/Card.astro';
+import { Card, CardRow, Button, ButtonsGroup, Placeholder } from '@components/mc';
+import { BuildingItem, NewsItem, ModItem, HelpItem } from '@components/items';
 
 import PlaceholderLoading from '@components/PlaceholderLoading.vue';
 import CardAddress from '@components/CardAddress.astro';
-import CardMod from '@components/CardMod.astro';
-import CardBuilding from '@components/CardBuilding.astro';
-import CardNews from '@components/CardNews.astro';
-import CardHelp from '@components/CardHelp.astro';
 import ListOfPlayers from '@components/ListOfPlayers.vue';
 import Spacer from '@components/Spacer.astro';
 
-const address = 'mc.klukva.xyz'
-const discord = 'https://discord.gg/3mX4aPAP9J'
+const address = import.meta.env.SERVER_ADDRESS
+const discord = import.meta.env.DISCORD_ADRESS
 
 const allPlugins = (await getCollection("plugins")).sort(
   (a, b) => Number(a.data.sort_order) - Number(b.data.sort_order)
@@ -41,52 +36,73 @@ const allHelps = (await getCollection("help")).sort(
 
 	<Spacer />
 
-	<MCCard mode="blank">
+	<Card mode="blank">
 		<CardAddress address={address} />
 
-		<McButtonsGroup slot="footer">
-			<McButton stretched="true" component="a" href={discord} target="_blank">Discord</McButton>
-		</McButtonsGroup>
-	</MCCard>
+		<ButtonsGroup slot="footer">
+			<Button stretched="true" component="a" href={discord} target="_blank">Discord</Button>
+		</ButtonsGroup>
+	</Card>
 
-	<MCCard title="Список активных игроков">
+	<Card title="Список активных игроков">
 		<ListOfPlayers client:load address={address}>
-			<PlaceholderLoading  />
+			<PlaceholderLoading slot="loading" />
+			<Placeholder slot="offline">Сервер оффлайн :(</Placeholder>
+			<Placeholder slot="no_players">На сервере никого нет :(</Placeholder>
 		</ListOfPlayers>
-	</MCCard>
+	</Card>
 
-	<MCCard title="Рекомендуемые моды" mode="blank">
-		{ allPlugins.map(item => <CardMod item={item} />) }
+	<Card title="Рекомендуемые моды" mode="blank">
+		{ allPlugins.map(item => 
+			<CardRow>
+				<ModItem {item} />
+			</CardRow>
+		) }
 
-		<McButtonsGroup slot="footer">
-			<McButton stretched="true" component="a" href="https://modrinth.com/collection/pDf8krcz" target="_blank">Посмотреть</McButton>
-			<McButton stretched="true" component="a" href="mods.zip" target="_blank" download="mods">Скачать</McButton>
-		</McButtonsGroup>
-	</MCCard>
+		<ButtonsGroup slot="footer">
+			<Button stretched="true" component="a" href="https://modrinth.com/collection/pDf8krcz" target="_blank">Посмотреть</Button>
+			<Button stretched="true" component="a" href="mods.zip" target="_blank" download="mods">Скачать</Button>
+		</ButtonsGroup>
+	</Card>
 
-	<MCCard title="Последние новости" mode="blank">
-		{ allNews.map(item => <CardNews item={item} />) }
+	<Card title="Последние новости" mode="blank">
+		{ allNews.map(item => 
+			<CardRow>
+				<NewsItem {item} />
+			</CardRow>
+		) }
 		
-		<McButtonsGroup slot="footer">
-			<McButton stretched="true" component="a" href="/news/">Все новости</McButton>
-		</McButtonsGroup>
-	</MCCard>
+		<ButtonsGroup slot="footer">
+			<Button stretched="true" component="a" href="/news/">Все новости</Button>
+		</ButtonsGroup>
+	</Card>
 
-	<MCCard title="Постройки" mode="blank">
-		{ allBuildings.map(item => <CardBuilding item={item} />) }
+	<Card title="Постройки" mode="blank">
+		{ allBuildings.map(item => 
+			<CardRow>
+				<BuildingItem {item} />
+			</CardRow>
+		) }
 		
-		<McButtonsGroup slot="footer">
-			<McButton stretched="true" component="a" href="/buildings/">Все постройки</McButton>
-		</McButtonsGroup>
-	</MCCard>
+		<ButtonsGroup slot="footer">
+			<Button stretched="true" component="a" href="/buildings/">Все постройки</Button>
+		</ButtonsGroup>
+	</Card>
 
-	<MCCard title="Помощь">
-		{ allHelps.map(item => <CardHelp item={item} />) }
-	</MCCard>
+	<Card title="Помощь" mode='blank'>
+		{ allHelps.map(item => 
+			<CardRow>
+				<HelpItem {item} />
+			</CardRow>
+		) }
+	</Card>
 
-	<MCCard mode="blank">
-		<McButton stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">Проголосовать за сервер</McButton>
-	</MCCard>
+	<Card title="Проголосовать за сервер">
+		<ButtonsGroup>
+			<Button stretched="true" component="a" href="https://hotmc.ru/minecraft-server-268678" target="_blank">HOTMC</Button>
+			<Button stretched="true" component="a" href="https://mineserv.top/klukva" target="_blank">MineServ.top</Button>
+		</ButtonsGroup>
+	</Card>
 
 	<Spacer />
 

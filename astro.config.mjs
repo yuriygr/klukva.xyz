@@ -16,6 +16,7 @@ export default defineConfig({
     enabled: false
   },
   image: {
-    service: squooshImageService()
+    service: squooshImageService(),
+    domains: ["leonardo.osnova.io", "cdn.modrinth.com"]
   }
 })

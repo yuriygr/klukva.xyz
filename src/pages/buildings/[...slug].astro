@@ -1,6 +1,7 @@
 ---
 import Landing from '@layouts/Landing.astro';
-import MCCard from '@components/mc/Card.astro';
+
+import { Card } from '@components/mc';
 import Spacer from '@components/Spacer.astro';
 
 import { getCollection } from 'astro:content';
@@ -19,9 +20,9 @@ const { Content } = await entry.render();
 ---
 
 <Landing page_title={entry.data.title}>
-  <MCCard title={entry.data.title}>
-    {entry.body}
-  </MCCard>
+  <Card title={entry.data.title}>
+    <Content />
+  </Card>
 
 	<Spacer height="100" />
 </Landing>

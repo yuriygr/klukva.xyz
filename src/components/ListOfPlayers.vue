@@ -1,12 +1,10 @@
 
 <template>
-	<template v-if="loading">
-		<slot />
-	</template>
+	<slot v-if="loading" name="loading"/>
 
 	<template v-else>
-		<placeholder v-if="!online">Сервер оффлайн :(</placeholder>
-		<placeholder v-if="players.online == 0">На сервере никого нет :(</placeholder>
+		<slot v-if="!online" name="offline"/>
+		<slot v-if="players.online == 0" name="no_players"/>
 
 		<template v-if="players.online > 0">
 			<div class="players-online">{{ players.online }} / {{ players.max }}</div>
@@ -24,8 +22,6 @@
 </template>
 
 <script setup>
-import Placeholder from '@components/Placeholder.vue';
-
 import { ref, computed } from 'vue';
 import axios from 'axios';
 

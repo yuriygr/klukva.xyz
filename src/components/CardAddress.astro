@@ -1,18 +1,18 @@
 ---
+import Button from '@components/mc/Button.vue';
+
 interface Props {
 	address?: string;
 }
 
 const { address = 'localhost:45545' } = Astro.props;
-import McButton from '@components/mc/Button.vue';
-
 ---
 
 <div class="card-address">
   <div class="card-address__field" id="code">
     {address}
   </div>
-  <McButton mode="green" size="l" id="copy">Копировать</McButton>
+  <Button mode="green" size="l" id="copy">Копировать</Button>
 </div>
 
 <script>

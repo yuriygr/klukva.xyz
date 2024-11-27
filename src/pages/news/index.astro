@@ -1,8 +1,9 @@
 ---
 import Landing from '@layouts/Landing.astro';
 
-import MCCard from '@components/mc/Card.astro';
-import CardNews from '@components/CardNews.astro';
+import { Card, CardRow } from '@components/mc';
+import { NewsItem } from '@components/items';
+
 import Spacer from '@components/Spacer.astro';
 
 import { getCollection } from 'astro:content';
@@ -13,9 +14,13 @@ const allNews = (await getCollection("news")).sort(
 ---
 
 <Landing page_title="Новости">
-	<MCCard title="Новости" mode="blank">
-		{ allNews.map(item => <CardNews item={item} /> ) }
-	</MCCard>
+	<Card title="Новости" mode="blank">
+		{ allNews.map(item => 
+			<CardRow>
+				<NewsItem {item} />
+			</CardRow>
+		) }
+	</Card>
 
 	<Spacer height="100" />
 </Landing>
