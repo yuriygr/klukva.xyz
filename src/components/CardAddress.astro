@@ -16,8 +16,8 @@ const { address = 'localhost:45545' } = Astro.props;
 <script>
 	const code = document.getElementById('code');
 	const copy_button = document.getElementById('copy');
-	copy_button.addEventListener('click', () => {
-		navigator.clipboard.writeText(code.innerHTML);
+	copy_button?.addEventListener('click', () => {
+		navigator.clipboard.writeText(code.innerText);
 	});
 </script>
 
