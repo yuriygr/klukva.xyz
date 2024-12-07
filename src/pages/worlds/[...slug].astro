@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Landing from '@layouts/Landing.astro';
+
+import { Card, CardRow, Placeholder, PlaceholderLoading } from '@components/mc';
+import { BuildingItem, WorldItem } from '@components/items';
+
+import ListOfPlayers from '@components/ListOfPlayers.vue';
+import Spacer from '@components/Spacer.astro';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allWorlds = await getCollection('worlds');
+
+  return allWorlds.map(world => ({
+    params: { slug: world.slug }, props: { entry: world }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const worldBuildings = (await getCollection("buildings", ({ data }) => {
+  return data.world.slug == entry.slug
+})).sort(
+  (a, b) => Date.parse(b.data.date.toString()) - Date.parse(a.data.date.toString())
+);
+
+---
+
+<Landing page_title={entry.data.title}>
+  <Card>
+    <WorldItem item={entry} />
+  </Card>
+
+  <Card title="Список активных игроков">
+		<ListOfPlayers client:load address={entry.data.address}>
+			<PlaceholderLoading slot="loading" />
+			<Placeholder slot="offline">Сервер оффлайн :(</Placeholder>
+			<Placeholder slot="no_players">На сервере никого нет :(</Placeholder>
+		</ListOfPlayers>
+	</Card>
+
+	<Card title="Статистика">
+    <Placeholder>Ошибка загрузки</Placeholder>
+	</Card>
+
+	<Card title="Постройки" mode="blank">
+    { worldBuildings.length == 0 &&
+			<CardRow>
+        <Placeholder>Пока-что построек нет</Placeholder>
+      </CardRow>
+    }
+		{ worldBuildings.map(item => 
+			<CardRow>
+				<BuildingItem {item} />
+			</CardRow>
+		) }
+	</Card>
+
+	<Spacer height="100" />
+</Landing>

@@ -126,7 +126,7 @@ export default {
 	white-space: nowrap;
 	user-select: none;
 
-  font-family: 'Minecraft';
+  font-family: inherit;
   font-optical-sizing: auto;
   margin: 0;
   padding: 0;

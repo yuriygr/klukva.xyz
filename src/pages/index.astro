@@ -4,10 +4,9 @@ import { getCollection } from 'astro:content';
 import Landing from '@layouts/Landing.astro';
 import Logo from '@components/Logo.astro';
 
-import { Card, CardRow, Button, ButtonsGroup, Placeholder } from '@components/mc';
-import { BuildingItem, NewsItem, ModItem, HelpItem } from '@components/items';
+import { Card, CardRow, Button, ButtonsGroup, Placeholder, PlaceholderLoading } from '@components/mc';
+import { WorldItem, BuildingItem, NewsItem, ModItem, HelpItem } from '@components/items';
 
-import PlaceholderLoading from '@components/PlaceholderLoading.vue';
 import CardAddress from '@components/CardAddress.astro';
 import ListOfPlayers from '@components/ListOfPlayers.vue';
 import Spacer from '@components/Spacer.astro';
@@ -15,6 +14,9 @@ import Spacer from '@components/Spacer.astro';
 const address = import.meta.env.SERVER_ADDRESS
 const discord = import.meta.env.DISCORD_ADRESS
 
+const allWorlds = (await getCollection("worlds")).sort(
+  (a, b) => Number(a.data.sort_order) - Number(b.data.sort_order)
+);
 const allPlugins = (await getCollection("plugins")).sort(
   (a, b) => Number(a.data.sort_order) - Number(b.data.sort_order)
 );
@@ -50,6 +52,14 @@ const allHelps = (await getCollection("help")).sort(
 			<Placeholder slot="offline">Сервер оффлайн :(</Placeholder>
 			<Placeholder slot="no_players">На сервере никого нет :(</Placeholder>
 		</ListOfPlayers>
+	</Card>
+
+	<Card title="Доступные миры" mode="blank">
+		{ allWorlds.map(item =>
+			<CardRow>
+				<WorldItem {item} />
+			</CardRow>
+		) }
 	</Card>
 
 	<Card title="Рекомендуемые моды" mode="blank">

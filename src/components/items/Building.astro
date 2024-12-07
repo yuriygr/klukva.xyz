@@ -1,14 +1,19 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
 
 interface Props {
   item: CollectionEntry<'buildings'>;
 }
 
 const { item } = Astro.props;
+
 const formatCordoarias = (c) => {
   return `X: ${c.x} Y: ${c.y} Z: ${c.z}`
 }
+
+const relatedWorld = await getEntry(item.data.world)
+
 ---
 
 <div class="card-news">
@@ -16,7 +21,7 @@ const formatCordoarias = (c) => {
     <div class="card-news__title" set:text={item.data.title}/>
     <div class="card-news__caption" set:text={item.data.caption}/>
     <div class="card-news__meta">
-      <span set:text={item.data.world} />
+      <a href={`/worlds/${relatedWorld.slug}`} set:text={relatedWorld.data.title} />
       <span set:text={formatCordoarias(item.data.cordoarias)} />
       { item.body &&
         <a class="card-news__open" href={`/buildings/${item.slug}`}>Читать далее</a>
@@ -62,18 +67,18 @@ const formatCordoarias = (c) => {
     font-size: 1.2rem;
     line-height: calc(1.4 * 1em);
 
-    * + * { margin-left: .75rem; }
-  }
+    a {
+      color: #bababa;
+      text-decoration: underline;
 
-  &__open {
-    color: #bababa;
-    text-decoration: underline;
-
-    @media(hover: hover) {
-      &:hover {
-        color: #d5d5d5;
+      @media(hover: hover) {
+        &:hover {
+          color: #d5d5d5;
+        }
       }
     }
+
+    * + * { margin-left: .75rem; }
   }
 }
 </style>

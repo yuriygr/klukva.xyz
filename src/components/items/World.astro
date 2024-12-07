@@ -3,24 +3,30 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  item: CollectionEntry<'plugins'>;
+  item: CollectionEntry<'worlds'>;
 }
 
 const { item } = Astro.props;
+
+
+const iconPath = () => {
+  const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/_worlds/*.{jpeg,jpg,png,gif}",
+  );
+  return images[`/src/assets/_worlds/${item.data.icon}`]()
+}
+
 ---
 
-<div class="card-mod">
+<a class="card-mod" href={`/worlds/${item.slug}`} >
   <div class="card-mod__icon">
-    <Image src={item.data.icon} densities={[ 1.5, 2 ]} format={'png'} alt={`Иконка мода ${item.data.title}`} width={48} height={48} />
+    <Image src={iconPath()} densities={[ 1.5, 2 ]} format={'png'} alt={`Иконка сервера ${item.data.title}`} width={40} height={40} />
   </div>
   <div class="card-mod__content">
-    <div class="card-mod__title" set:text={item.data.title}/>
-    <div class="card-mod__info" set:text={item.data.info}/>
-    <div class="card-mod__meta">
-      <a class="card-mod__open" target="_blank" href={item.data.url}>Подробнее</a>
-    </div>
+    <div class="card-mod__title" set:text={item.data.title} />
+    <div class="card-mod__info" set:text={item.data.info} />
   </div>
-</div>
+</a>
 
 <script>
 
@@ -32,6 +38,16 @@ $icon-size: 48px;
 .card-mod {
   display: grid;
   grid-template-columns: $icon-size auto;
+  margin: -1rem;
+  padding: 1rem;
+
+  @media(hover: hover) {
+      &:hover {
+        background-color: #00000035;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
 
   &__icon {
     background: #c6c6c6;
@@ -58,6 +74,7 @@ $icon-size: 48px;
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
+    justify-content: center;
   }
 
   &__title {
@@ -77,26 +94,6 @@ $icon-size: 48px;
     color: #aaa;
     font-size: 1.2rem;
     line-height: calc(1.4 * 1em);
-    margin-bottom: .75rem;
-  }
-
-  &__meta {
-    color: #bababa;
-    font-size: 1.2rem;
-    line-height: calc(1.4 * 1em);
-
-    a {
-      color: #bababa;
-      text-decoration: underline;
-
-      @media(hover: hover) {
-        &:hover {
-          color: #d5d5d5;
-        }
-      }
-    }
-
-    * + * { margin-left: .75rem; }
   }
 }
 </style>

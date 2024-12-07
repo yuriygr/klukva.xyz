@@ -65,7 +65,6 @@ axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
 <style lang="scss">
 
 .players-online {
-	font-family: 'Minecraft';
 	font-size: 1.2rem;
 	line-height: calc(1.6 * 1em);
 	text-align: center;
@@ -128,7 +127,6 @@ axios.get(`https://api.mcsrvstat.us/3/${props.address}`)
 
 .player-item {
 	span {
-		font-family: 'Minecraft';
 		color: #fff;
 		font-size: 1.2rem;
 

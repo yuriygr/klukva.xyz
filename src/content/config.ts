@@ -1,5 +1,18 @@
 import { z, defineCollection, reference } from "astro:content";
 
+const worlds = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    info: z.string(),
+    address: z.string(),
+    icon: z.string(),
+    sort_order: z.number(),
+    relatedNews: z.array(reference('news')).optional(),
+    relatedBuildings: z.array(reference('buildings')).optional(),
+  })
+});
+
 const plugins = defineCollection({
   type: 'data',
   schema: z.object({
@@ -21,22 +34,14 @@ const news = defineCollection({
   })
 });
 
-const help = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    sort_order: z.number(),
-  })
-});
-
 const buildings = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     caption: z.string(),
     author: z.string(),
-    world: z.string(),
     date: z.date(),
+    world: reference('worlds'),
     cordoarias: z.object({
       x: z.number(),
       y: z.number(),
@@ -45,8 +50,17 @@ const buildings = defineCollection({
   })
 });
 
+const help = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    sort_order: z.number(),
+  })
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
+  worlds,
   plugins,
   news,
   help,
