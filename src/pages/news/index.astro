@@ -1,7 +1,7 @@
 ---
 import Landing from '@layouts/Landing.astro';
 
-import { Card, CardRow } from '@components/mc';
+import { Card, CardSeparator } from '@components/mc';
 import { NewsItem } from '@components/items';
 
 import Spacer from '@components/Spacer.astro';
@@ -14,12 +14,13 @@ const allNews = (await getCollection("news")).sort(
 ---
 
 <Landing page_title="Новости">
-	<Card title="Новости" mode="blank">
-		{ allNews.map(item => 
-			<CardRow>
+	<Card title="Новости">
+		{ allNews.map((item, index, array) => (
+			<>
 				<NewsItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 	</Card>
 
 	<Spacer height="100" />

@@ -1,7 +1,8 @@
 ---
 title: "Сахара"
 info: "Суровые пески пустыни ждут вас"
-address: "sahara.klukva.xyz"
+address: "sh.klukva.xyz"
 icon: "sahara.jpeg"
+backgroud_code: "sand"
 sort_order: 2
 ---

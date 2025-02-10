@@ -1,7 +1,7 @@
 ---
 import Landing from '@layouts/Landing.astro';
 
-import { Card, CardRow } from '@components/mc';
+import { Card, CardSeparator } from '@components/mc';
 import { HelpItem } from '@components/items';
 
 import Spacer from '@components/Spacer.astro';
@@ -14,12 +14,13 @@ const allHelps = (await getCollection("help")).sort(
 ---
 
 <Landing page_title="Помощь">
-	<Card title="Помощь" mode='blank'>
-		{ allHelps.map(item =>
-			<CardRow>
+	<Card title="Помощь">
+		{ allHelps.map((item, index, array) => (
+			<>
 				<HelpItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 	</Card>
 
 	<Spacer height="100" />

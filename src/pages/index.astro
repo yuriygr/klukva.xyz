@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Landing from '@layouts/Landing.astro';
 import Logo from '@components/Logo.astro';
 
-import { Card, CardRow, Button, ButtonsGroup, Placeholder, PlaceholderLoading } from '@components/mc';
+import { Card, CardSeparator, Button, ButtonsGroup, Placeholder, PlaceholderLoading } from '@components/mc';
 import { WorldItem, BuildingItem, NewsItem, ModItem, HelpItem } from '@components/items';
 
 import CardAddress from '@components/CardAddress.astro';
@@ -54,20 +54,22 @@ const allHelps = (await getCollection("help")).sort(
 		</ListOfPlayers>
 	</Card>
 
-	<Card title="Доступные миры" mode="blank">
-		{ allWorlds.map(item =>
-			<CardRow>
+	<Card title="Доступные миры">
+		{ allWorlds.map((item, index, array) => (
+			<>
 				<WorldItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 	</Card>
 
-	<Card title="Рекомендуемые моды" mode="blank">
-		{ allPlugins.map(item => 
-			<CardRow>
+	<Card title="Рекомендуемые моды">
+		{ allPlugins.map((item, index, array) => (
+			<>
 				<ModItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 
 		<ButtonsGroup slot="footer">
 			<Button stretched={true} component="a" href="https://modrinth.com/collection/pDf8krcz" target="_blank">Посмотреть</Button>
@@ -75,36 +77,39 @@ const allHelps = (await getCollection("help")).sort(
 		</ButtonsGroup>
 	</Card>
 
-	<Card title="Последние новости" mode="blank">
-		{ allNews.map(item => 
-			<CardRow>
+	<Card title="Последние новости">
+		{ allNews.map((item, index, array) => (
+			<>
 				<NewsItem {item} />
-			</CardRow>
-		) }
-		
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
+
 		<ButtonsGroup slot="footer">
 			<Button stretched={true} component="a" href="/news/">Все новости</Button>
 		</ButtonsGroup>
 	</Card>
 
-	<Card title="Постройки" mode="blank">
-		{ allBuildings.map(item => 
-			<CardRow>
+	<Card title="Постройки">
+		{ allBuildings.map((item, index, array) => (
+			<>
 				<BuildingItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 		
 		<ButtonsGroup slot="footer">
 			<Button stretched={true} component="a" href="/buildings/">Все постройки</Button>
 		</ButtonsGroup>
 	</Card>
 
-	<Card title="Помощь" mode='blank'>
-		{ allHelps.map(item => 
-			<CardRow>
+	<Card title="Помощь">
+		{ allHelps.map((item, index, array) => (
+			<>
 				<HelpItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 	</Card>
 
 	<Card title="Проголосовать за сервер">

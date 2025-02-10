@@ -1,18 +1,5 @@
 import { z, defineCollection, reference } from "astro:content";
 
-const worlds = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    info: z.string(),
-    address: z.string(),
-    icon: z.string(),
-    sort_order: z.number(),
-    relatedNews: z.array(reference('news')).optional(),
-    relatedBuildings: z.array(reference('buildings')).optional(),
-  })
-});
-
 const plugins = defineCollection({
   type: 'data',
   schema: z.object({
@@ -21,6 +8,20 @@ const plugins = defineCollection({
     url: z.string(),
     icon: z.string(),
     sort_order: z.number(),
+  })
+});
+
+const worlds = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    info: z.string(),
+    address: z.string(),
+    icon: z.string(),
+    backgroud_code: z.string().optional(),
+    sort_order: z.number(),
+    relatedNews: z.array(reference('news')).optional(),
+    relatedBuildings: z.array(reference('buildings')).optional(),
   })
 });
 

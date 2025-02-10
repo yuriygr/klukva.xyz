@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import Landing from '@layouts/Landing.astro';
 
-import { Card, CardRow, Placeholder, PlaceholderLoading } from '@components/mc';
+import { Card, CardSeparator, Placeholder, PlaceholderLoading } from '@components/mc';
 import { BuildingItem, WorldItem } from '@components/items';
 
 import ListOfPlayers from '@components/ListOfPlayers.vue';
@@ -29,7 +29,8 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
 
 ---
 
-<Landing page_title={entry.data.title}>
+<Landing page_title={entry.data.title} body_class={[ entry.data.backgroud_code ]}>
+
   <Card>
     <WorldItem item={entry} />
   </Card>
@@ -46,17 +47,16 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
     <Placeholder>Ошибка загрузки</Placeholder>
 	</Card>
 
-	<Card title="Постройки" mode="blank">
+	<Card title="Постройки">
     { worldBuildings.length == 0 &&
-			<CardRow>
-        <Placeholder>Пока-что построек нет</Placeholder>
-      </CardRow>
+			<Placeholder>Пока-что построек нет</Placeholder>
     }
-		{ worldBuildings.map(item => 
-			<CardRow>
+		{ worldBuildings.map((item, index, array) => (
+			<>
 				<BuildingItem {item} />
-			</CardRow>
-		) }
+				{ (++index != array.length) && <CardSeparator /> }
+			</>
+		)) }
 	</Card>
 
 	<Spacer height="100" />

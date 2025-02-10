@@ -1,5 +1,6 @@
 ---
 import '@south-paw/typeface-minecraft'
+//import '@assets/scss/_grid.scss';
 import '@assets/scss/main.scss';
 import '@assets/scss/vars.scss';
 
@@ -8,9 +9,10 @@ import AppHeader from '@components/app/Header.astro';
 
 interface Props {
 	page_title?: string;
+	body_class?: object;
 }
 
-const { page_title } = Astro.props;
+const { page_title, body_class = 'dirt' } = Astro.props;
 
 const title = 'Клюква'
 
@@ -37,9 +39,9 @@ const meta = {
 				gtag('config', 'G-NSQ8VJTT2M');
 		</script>
 	</head>
-	<body>
+	<body class:list={[ body_class ]}>
 		<AppHeader />
-		<div class="container">
+		<div class="wrapper">
 			<slot />
 		</div>
 	</body>

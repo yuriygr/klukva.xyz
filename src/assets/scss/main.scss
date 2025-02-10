@@ -23,11 +23,27 @@ body {
   -webkit-overflow-scrolling: auto;
   position: relative;
 
-  background-image: url('../background/grass.jpg'), url('../background/dirt.jpg');
-  background-repeat: repeat-x, repeat;
-  background-position: top 0px left, top 160px left;
-  background-size: auto 160px, auto 80px;
 
+  &.dirt {
+    background-image: url('../background/grass.jpg'), url('../background/dirt.jpg');
+    background-repeat: repeat-x, repeat;
+    background-position: top 0px left, top 160px left;
+    background-size: auto 160px, auto 80px;
+  }
+
+  &.ice {
+    background-image: url('../background/snow.jpg'), url('../background/ice.jpg');
+    background-repeat: repeat-x, repeat;
+    background-position: top 0px left, top 38px left;
+    background-size: auto 38px, auto 80px;
+  }
+
+  &.sand {
+    background-image: url('../background/sandstone.png'), url('../background/sand.png');
+    background-repeat: repeat-x, repeat;
+    background-position: top 0px left, top 10px left;
+    background-size: auto 100px, auto 100px;
+  }
 }
 
 a {
@@ -50,7 +66,7 @@ a {
   &:focus { outline: 0; }
 }
 
-.container {
+.wrapper {
   z-index: 200;
   position: relative;
   margin-left: auto;
