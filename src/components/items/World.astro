@@ -2,11 +2,15 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
+import ServerStatus from '@components/ServerStatus.vue';
+
+
 interface Props {
   item: CollectionEntry<'worlds'>;
+  clickable?: boolean;
 }
 
-const { item } = Astro.props;
+const { item, clickable = true } = Astro.props;
 
 
 const iconPath = () => {
@@ -16,15 +20,22 @@ const iconPath = () => {
   return images[`/src/assets/_worlds/${item.data.icon}`]()
 }
 
+const WrapperElement = clickable ? 'a' : 'div';
+const props = {
+  href: clickable ? `/worlds/${item.slug}` : ''
+}
+
 ---
 
-<a class="card-world" href={`/worlds/${item.slug}`} >
+<WrapperElement class="card-world" {...props}>
   <Image class="card-world__cover" src={iconPath()} densities={[ 1.5, 2 ]} format={'png'} alt={`Иконка сервера ${item.data.title}`} />
   <div class="card-world__content">
     <div class="card-world__title" set:html={item.data.title} />
     <div class="card-world__info" set:html={item.data.info} />
+
+    <ServerStatus client:load status="online" />
   </div>
-</a>
+</WrapperElement>
 
 <script>
 
@@ -54,12 +65,14 @@ const iconPath = () => {
     object-fit: cover;
     object-position: right center;
     z-index: 200;
+    user-select: none;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     position: relative;
     z-index: 300;
     width: 100%;

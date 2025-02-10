@@ -32,7 +32,7 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
 <Landing page_title={entry.data.title} body_class={[ entry.data.backgroud_code ]}>
 
   <Card>
-    <WorldItem item={entry} />
+    <WorldItem item={entry} clickable={false} />
   </Card>
 
   <Card title="Список активных игроков">
