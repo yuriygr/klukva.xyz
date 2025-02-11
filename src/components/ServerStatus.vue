@@ -9,25 +9,41 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import axios from 'axios';
+import { ref, computed } from 'vue';
+import service from '@_utils/service';
 
 const props = defineProps({
-  status: String
+  address: String,
 });
 
+const loading = ref(true);
+const online = ref(false);
 const players = ref(0);
+
+const status = computed(() => {
+	return online.value ? 'online' : 'offline'
+})
+
+service.get(`servers/${props.address}/players`)
+.then(res => {
+	res.data.online && (online.value = res.data.online)
+	res.data.players && (players.value = res.data.players)
+})
+.catch(err => {
+  online.value = false
+})
+.then(_ => loading.value = false)
 
 </script>
 
 <style lang="scss">
 .status {
   &--online {
-    --led-color: green;
+    --led-color: #4ce649;
   }
 
   &--offline {
-    --led-color: red;
+    --led-color: #e64980;
   }
 }
 
@@ -39,7 +55,7 @@ const players = ref(0);
   justify-content: center;
   align-items: center;
   padding: .3rem .4rem;
-  margin-top: .6rem;
+  user-select: none;
 
   &__icon {
     width: 8px;

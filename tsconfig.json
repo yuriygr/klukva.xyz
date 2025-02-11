@@ -19,6 +19,9 @@
       ],
       "@_types/*": [
         "src/types/*"
+      ],
+      "@_utils/*": [
+        "src/_utils/*"
       ]
     },
     "jsx": "preserve"

@@ -33,7 +33,7 @@ const props = {
     <div class="card-world__title" set:html={item.data.title} />
     <div class="card-world__info" set:html={item.data.info} />
 
-    <ServerStatus client:load status="online" />
+    <ServerStatus client:load address={item.slug} />
   </div>
 </WrapperElement>
 
@@ -47,6 +47,7 @@ const props = {
   margin: -1rem;
   position: relative;
   min-height: 9rem;
+  user-select: none;
 
   @media(hover: hover) {
     &:hover {
@@ -102,6 +103,7 @@ const props = {
     text-shadow: 1px 1px 0 #2a2a2a;
     font-size: 1.2rem;
     line-height: calc(1.4 * 1em);
+    margin-bottom: .6rem;
   }
 }
 </style>
