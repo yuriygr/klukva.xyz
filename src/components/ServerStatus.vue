@@ -4,12 +4,12 @@
     `status--${status}`
   ]">
     <div class="status__icon"></div>
-    <div v-if="status == 'online'" class="status__text">{{ players }}</div>
+    <div v-if="status == 'online'" class="status__text">{{ online_players }}</div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import service from '@_utils/service';
 
 const props = defineProps({
@@ -17,20 +17,16 @@ const props = defineProps({
 });
 
 const loading = ref(true);
-const online = ref(false);
-const players = ref(0);
+const status = ref('loading');
+const online_players = ref(0);
 
-const status = computed(() => {
-	return online.value ? 'online' : 'offline'
-})
-
-service.get(`servers/${props.address}/players`)
+service.get(`servers/${props.address}`)
 .then(res => {
-	res.data.online && (online.value = res.data.online)
-	res.data.players && (players.value = res.data.players)
+	status.value = 'online'
+	online_players.value = res.onlinePlayers
 })
 .catch(err => {
-  online.value = false
+  status.value = 'offline'
 })
 .then(_ => loading.value = false)
 
@@ -38,6 +34,10 @@ service.get(`servers/${props.address}/players`)
 
 <style lang="scss">
 .status {
+  &--loading {
+    --led-color: #8d8d8d;
+  }
+
   &--online {
     --led-color: #4ce649;
   }

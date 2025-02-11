@@ -5,7 +5,7 @@ import Landing from '@layouts/Landing.astro';
 import { Card, CardSeparator, Placeholder, PlaceholderLoading } from '@components/mc';
 import { BuildingItem, WorldItem } from '@components/items';
 
-import ListOfPlayers from '@components/ListOfPlayers.vue';
+import ServerPlayers from '@components/ServerPlayers.vue';
 import Spacer from '@components/Spacer.astro';
 
 import { getCollection } from 'astro:content';
@@ -36,11 +36,11 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
   </Card>
 
   <Card title="Список активных игроков">
-		<ListOfPlayers client:load address={entry.data.address}>
+		<ServerPlayers client:load address={entry.slug}>
 			<PlaceholderLoading slot="loading" />
 			<Placeholder slot="offline">Сервер оффлайн :(</Placeholder>
 			<Placeholder slot="no_players">На сервере никого нет :(</Placeholder>
-		</ListOfPlayers>
+		</ServerPlayers>
 	</Card>
 
 	<Card title="Статистика">
