@@ -4,7 +4,7 @@
     `status--${status}`
   ]">
     <div class="status__icon"></div>
-    <div v-if="status == 'online'" class="status__text">{{ online_players }}</div>
+    <div class="status__text">{{ online_players }}</div>
   </div>
 </template>
 
