@@ -19,6 +19,7 @@ const worlds = defineCollection({
     address: z.string(),
     icon: z.string(),
     backgroud_code: z.string().optional(),
+    tint: z.string(),
     sort_order: z.number(),
     relatedNews: z.array(reference('news')).optional(),
     relatedBuildings: z.array(reference('buildings')).optional(),

@@ -22,7 +22,8 @@ const iconPath = () => {
 
 const WrapperElement = clickable ? 'a' : 'div';
 const props = {
-  href: clickable ? `/worlds/${item.slug}` : ''
+  href: clickable ? `/worlds/${item.slug}` : '',
+  style: `--tint: ${item.data.tint};`
 }
 
 ---
@@ -48,6 +49,7 @@ const props = {
   position: relative;
   min-height: 9rem;
   user-select: none;
+  background: var(--tint);
 
   @media(hover: hover) {
     &:hover {
@@ -67,6 +69,7 @@ const props = {
     object-position: right center;
     z-index: 200;
     user-select: none;
+    text-indent:-9999px;
   }
 
   &__content {

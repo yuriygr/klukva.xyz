@@ -4,5 +4,6 @@ info: "Суровые пески пустыни ждут вас"
 address: "sh.klukva.xyz"
 icon: "sahara.png"
 backgroud_code: "sand"
-sort_order: 2
+tint: "#643829"
+sort_order: 3
 ---
