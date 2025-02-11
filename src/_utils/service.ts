@@ -110,9 +110,14 @@ const service = class {
   }
 } 
 
+// Fuck astro with this env problems
+let _addr = {
+	'development': 'http://localhost:3677/',
+	'production': 'https://service.klukva.xyz/'
+}
+
 export default new service({
-  baseURL: 'http://localhost:3677/',
-	//baseURL: 'https://service.klukva.xyz/',
+	baseURL: _addr[import.meta.env.MODE],
   version: 'v1',
   withCredentials: true
 })
