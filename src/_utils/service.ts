@@ -111,8 +111,8 @@ const service = class {
 } 
 
 export default new service({
-  baseURL: 'http://localhost:3677/',
-	//baseURL: 'https://service.klukva.xyz/',
+  //baseURL: 'http://localhost:3677/',
+	baseURL: 'https://service.klukva.xyz/',
   version: 'v1',
   withCredentials: true
 })
