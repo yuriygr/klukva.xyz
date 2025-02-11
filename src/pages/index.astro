@@ -46,14 +46,6 @@ const allHelps = (await getCollection("help")).sort(
 		</ButtonsGroup>
 	</Card>
 
-	<Card title="Список активных игроков">
-		<ListOfPlayers client:load address={address}>
-			<PlaceholderLoading slot="loading" />
-			<Placeholder slot="offline">Сервер оффлайн :(</Placeholder>
-			<Placeholder slot="no_players">На сервере никого нет :(</Placeholder>
-		</ListOfPlayers>
-	</Card>
-
 	<Card title="Доступные миры">
 		{ allWorlds.map((item, index, array) => (
 			<>
@@ -61,6 +53,14 @@ const allHelps = (await getCollection("help")).sort(
 				{ (++index != array.length) && <CardSeparator /> }
 			</>
 		)) }
+	</Card>
+
+	<Card title="Список активных игроков">
+		<ListOfPlayers client:load address={address}>
+			<PlaceholderLoading slot="loading" />
+			<Placeholder slot="offline">Сервер оффлайн :(</Placeholder>
+			<Placeholder slot="no_players">На сервере никого нет :(</Placeholder>
+		</ListOfPlayers>
 	</Card>
 
 	<Card title="Рекомендуемые моды">
