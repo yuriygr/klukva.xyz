@@ -37,7 +37,7 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
 
   <Card>
     <WorldItem item={entry} clickable={false} />
-		<ServerAddress address={entry.data.address} slot="footer" />
+		{ entry.data.show_address && <ServerAddress address={entry.data.address} slot="footer" /> }
   </Card>
 
   <Card title="Список активных игроков">

@@ -5,5 +5,7 @@ address: "am.klukva.xyz"
 icon: "amazonia.jpg"
 backgroud_code: "dirt"
 tint: "#667893"
+is_closed: false
+show_address: false
 sort_order: 4
 ---

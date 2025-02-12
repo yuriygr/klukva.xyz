@@ -20,7 +20,10 @@ const worlds = defineCollection({
     icon: z.string(),
     backgroud_code: z.string().optional(),
     tint: z.string(),
+    is_closed: z.boolean().default(false),
+    show_address: z.boolean().default(false),
     sort_order: z.number(),
+
     relatedNews: z.array(reference('news')).optional(),
     relatedBuildings: z.array(reference('buildings')).optional(),
   })

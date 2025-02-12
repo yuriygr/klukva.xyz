@@ -5,5 +5,7 @@ address: "lp.klukva.xyz"
 icon: "laplandia.png"
 backgroud_code: "ice"
 tint: "#667893"
+is_closed: false
+show_address: false
 sort_order: 2
 ---
