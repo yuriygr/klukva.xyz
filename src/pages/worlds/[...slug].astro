@@ -12,10 +12,8 @@ const { Content } = await entry.render();
 import Landing from '@layouts/Landing.astro';
 
 import { Card, CardSeparator, Placeholder, PlaceholderLoading } from '@components/mc';
+import { ServerAddress, ServerPlayers, ServerStatistics } from '@components/server';
 import { BuildingItem, WorldItem } from '@components/items';
-
-import ServerPlayers from '@components/ServerPlayers.vue';
-import ServerStatistics from '@components/ServerStatistics.vue';
 
 import Spacer from '@components/Spacer.astro';
 
@@ -39,6 +37,7 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
 
   <Card>
     <WorldItem item={entry} clickable={false} />
+		<ServerAddress address={entry.data.address} slot="footer" />
   </Card>
 
   <Card title="Список активных игроков">
