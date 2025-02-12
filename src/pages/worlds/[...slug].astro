@@ -1,25 +1,31 @@
 ---
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'worlds'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
 import Landing from '@layouts/Landing.astro';
 
 import { Card, CardSeparator, Placeholder, PlaceholderLoading } from '@components/mc';
 import { BuildingItem, WorldItem } from '@components/items';
 
 import ServerPlayers from '@components/ServerPlayers.vue';
-import Spacer from '@components/Spacer.astro';
+import ServerStatistics from '@components/ServerStatistics.vue';
 
-import { getCollection } from 'astro:content';
+import Spacer from '@components/Spacer.astro';
 
 export async function getStaticPaths() {
   const allWorlds = await getCollection('worlds');
 
-  return allWorlds.map(world => ({
+  return allWorlds.map((world: CollectionEntry<'worlds'>) => ({
     params: { slug: world.slug }, props: { entry: world }
   }));
 }
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
 
 const worldBuildings = (await getCollection("buildings", ({ data }) => {
   return data.world.slug == entry.slug
@@ -44,7 +50,11 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
 	</Card>
 
 	<Card title="Статистика">
-    <Placeholder>Ошибка загрузки</Placeholder>
+		
+		<ServerStatistics client:load address={entry.slug}>
+			<PlaceholderLoading slot="loading" />
+			<Placeholder slot="error">Ошибка загрузки</Placeholder>
+		</ServerStatistics>
 	</Card>
 
 	<Card title="Постройки">

@@ -1,21 +1,26 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
 import Landing from '@layouts/Landing.astro';
 
 import { Card } from '@components/mc';
 import Spacer from '@components/Spacer.astro';
 
-import { getCollection } from 'astro:content';
-
 export async function getStaticPaths() {
   const allNews = await getCollection('news');
 
-  return allNews.map(news => ({
+  return allNews.map((news: CollectionEntry<'news'>) => ({
     params: { slug: news.slug }, props: { entry: news }
   }));
 }
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
 
 ---
 

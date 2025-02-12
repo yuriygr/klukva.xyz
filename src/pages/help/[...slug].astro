@@ -1,21 +1,26 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'help'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
 import Landing from '@layouts/Landing.astro';
 
 import { Card } from '@components/mc';
 import Spacer from '@components/Spacer.astro';
 
-import { getCollection } from 'astro:content';
-
 export async function getStaticPaths() {
   const allHelps = await getCollection('help');
 
-  return allHelps.map(building => ({
-    params: { slug: building.slug }, props: { entry: building }
+  return allHelps.map((help: CollectionEntry<'help'>) => ({
+    params: { slug: help.slug }, props: { entry: help }
   }));
 }
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
 
 ---
 

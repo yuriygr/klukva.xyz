@@ -1,21 +1,26 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'buildings'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
 import Landing from '@layouts/Landing.astro';
 
 import { Card } from '@components/mc';
 import Spacer from '@components/Spacer.astro';
 
-import { getCollection } from 'astro:content';
-
 export async function getStaticPaths() {
   const allBuildings = await getCollection('buildings');
 
-  return allBuildings.map(building => ({
+  return allBuildings.map((building: CollectionEntry<'buildings'>) => ({
     params: { slug: building.slug }, props: { entry: building }
   }));
 }
-
-const { entry } = Astro.props;
-const { Content } = await entry.render();
 
 ---
 
