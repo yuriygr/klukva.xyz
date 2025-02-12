@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import vue from "@astrojs/vue";
 import partytown from '@astrojs/partytown'
 
@@ -17,6 +17,7 @@ export default defineConfig({
     enabled: false
   },
   image: {
+    service: passthroughImageService(),
     domains: ["leonardo.osnova.io", "cdn.modrinth.com"]
   }
 })
