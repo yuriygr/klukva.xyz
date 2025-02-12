@@ -9,7 +9,7 @@ interface Props {
 const { item } = Astro.props;
 ---
 
-<a class="card-mod" target="_blank" href={item.data.url}>
+<a class="card-mod" target="_blank" href={item.data.url} draggable="false">
   <div class="card-mod__icon">
     <Image src={item.data.icon} densities={[ 1.5, 2 ]} format={'png'} alt={`Иконка мода ${item.data.title}`} width={48} height={48} />
   </div>

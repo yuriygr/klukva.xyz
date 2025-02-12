@@ -28,7 +28,7 @@ const props = {
 
 ---
 
-<WrapperElement class="card-world" {...props}>
+<WrapperElement class="card-world" {...props} draggable="false">
   <Image class="card-world__cover" src={iconPath()} densities={[ 1.5, 2 ]} format={'png'} alt={`Иконка сервера ${item.data.title}`} />
   <div class="card-world__content">
     <div class="card-world__title" set:html={item.data.title} />
