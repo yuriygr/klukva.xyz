@@ -4,7 +4,6 @@ import partytown from '@astrojs/partytown'
 
 export default defineConfig({
   site: 'https://klukva.xyz',
-  trailingSlash: 'never',
   integrations: [
     vue(),
     partytown({

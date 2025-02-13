@@ -3,23 +3,10 @@
 	<slot v-if="loading" name="loading"/>
 
 	<template v-else>
-		<slot v-if="status == 'offline'" name="offline"/>
+		<slot v-if="Object.keys(data).length == 0" name="error "/>
 
-		<template v-else-if="status == 'online'">
-			<slot v-if="data.players.length == 0" name="no_players"/>
-
-			<template v-if="data.players.length > 0">
-				<div class="players-online">{{ data.online }} / {{ data.max }}</div>
-				<div :class="[ 'players-progressbar', `players-progressbar--${loaded}` ]" :style="{ '--percent': percent }">
-					<div class="inner"></div>
-					<div class="bar"></div>
-				</div>
-				<div class="players-list">
-					<div class="player-item" v-for="player in data.players" :key="`player-${player.uuid}`">
-						<span>{{ player.displayName }}</span>
-					</div>
-				</div>
-			</template>
+		<template v-if="Object.keys(data).length > 0">
+			{{ data }}
 		</template>
 	</template>
 </template>
