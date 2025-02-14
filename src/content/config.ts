@@ -18,14 +18,25 @@ const worlds = defineCollection({
     info: z.string(),
     address: z.string(),
     icon: z.string(),
+    version: z.string().optional(),
     backgroud_code: z.string().optional(),
     tint: z.string(),
     is_closed: z.boolean().default(false),
-    show_address: z.boolean().default(false),
     sort_order: z.number(),
+
+
+
+    tags: z.array(reference('world_tags')).optional(),
 
     relatedNews: z.array(reference('news')).optional(),
     relatedBuildings: z.array(reference('buildings')).optional(),
+  })
+});
+
+const world_tags = defineCollection({
+  type: 'data',
+  schema: z.object({
+    label: z.string(),
   })
 });
 
@@ -66,6 +77,7 @@ const help = defineCollection({
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   worlds,
+  world_tags,
   plugins,
   news,
   help,

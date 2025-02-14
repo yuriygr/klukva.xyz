@@ -6,6 +6,5 @@ icon: "old-world.jpg"
 backgroud_code: "dirt"
 tint: "#2e3d22"
 is_closed: false
-show_address: false
 sort_order: 1
 ---
