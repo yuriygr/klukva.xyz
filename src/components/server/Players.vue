@@ -16,7 +16,10 @@
 				</div>
 				<div class="players-list">
 					<div class="player-item" v-for="player in data.players" :key="`player-${player.uuid}`">
-						<span>{{ player.displayName }}</span>
+						<div class="player-item__head">
+							<img :src="`https://minotar.net/avatar/${player.displayName}/20.png`" />
+						</div>
+						<span class="player-item__name">{{ player.displayName }}</span>
 					</div>
 				</div>
 			</template>
@@ -133,7 +136,29 @@ service.get(`servers/${props.address}/players`)
 }
 
 .player-item {
-	span {
+	display: inline-flex;
+	align-items: center;
+
+	&__head {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+		border-radius: 3px;
+		height: 16px;
+		width: 16px;
+		margin-right: .4rem;
+
+		img {
+			color: transparent;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			text-align: center;
+			text-indent: 10000px;
+		}
+	}
+
+	&__name {
 		color: #fff;
 		font-size: 1.2rem;
 
@@ -141,7 +166,7 @@ service.get(`servers/${props.address}/players`)
 		word-wrap: break-word;
 		word-break: break-word;
 		font-weight: 400;
-		line-height: calc(1.6 * 1em);
+		line-height: calc(1.1 * 1em);
 	}
 }
 </style>

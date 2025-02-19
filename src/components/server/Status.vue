@@ -69,7 +69,7 @@ service.get(`servers/${props.address}`)
     font-size: .8rem;
     font-weight: 700;
     color: #000;
-    line-height: .8;
+    line-height: 1;
   }
 
   @keyframes blink {
