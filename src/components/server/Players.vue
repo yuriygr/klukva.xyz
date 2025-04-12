@@ -17,7 +17,7 @@
 				<div class="players-list">
 					<div class="player-item" v-for="player in data.players" :key="`player-${player.uuid}`">
 						<div class="player-item__head">
-							<img :src="`https://minotar.net/avatar/${player.displayName}/20.png`" />
+							<img :src="`https://minotar.net/avatar/${player.displayName}/32.png`" />
 						</div>
 						<span class="player-item__name">{{ player.displayName }}</span>
 					</div>
@@ -131,6 +131,8 @@ service.get(`servers/${props.address}/players`)
 
 .players-list {
 	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 1rem;
 	position: relative;
 	margin-top: 1rem;
 }
