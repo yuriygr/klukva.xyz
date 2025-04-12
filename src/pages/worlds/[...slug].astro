@@ -51,6 +51,7 @@ const worldBuildings = (await getCollection("buildings", ({ data }) => {
 		<ServerStatistics client:load address={entry.slug}>
 			<PlaceholderLoading slot="loading" />
 			<Placeholder slot="error">Ошибка загрузки</Placeholder>
+			<CardSeparator slot="separator" />
 		</ServerStatistics>
 	</Card>
 
