@@ -1,5 +1,5 @@
 ---
-title: "Сахара"
+title: "Сухая Сахара"
 info: "Суровые пески пустыни ждут вас"
 address: "sh.klukva.xyz"
 icon: "sahara.png"
